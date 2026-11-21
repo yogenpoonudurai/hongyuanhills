@@ -139,7 +139,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           title: "殡仪服务",
           body: "涵盖遗体接送、安置安排、殡仪策划、灵堂布置及殡葬用品准备，依照不同文化与宗教礼仪提供协助。",
           cta: "咨询服务",
-          href: "#contact",
+          href: "#book",
         },
         {
           icon: "calendar",
@@ -212,7 +212,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         "无论您正在为家人提前规划，或需要即时的殡仪协助，我们都愿意倾听并提供帮助。",
       bookingCta: "WhatsApp 预约参观",
       callCta: "拨打 24 小时热线",
-      note: "网上预约表格即将上线；在此期间，请通过 WhatsApp 或电话与我们联系。",
+      note: "我们会在办公时间内回复。如需即时殡仪协助，请致电 24 小时热线。",
     },
   },
   en: {
@@ -289,7 +289,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
           title: "Funeral Services",
           body: "Transportation, placement, funeral planning, memorial hall setup and funeral supplies, tailored to different customs.",
           cta: "Enquire",
-          href: "#contact",
+          href: "#book",
         },
         {
           icon: "calendar",
@@ -364,7 +364,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         "Whether you are planning ahead for your family or need immediate funeral assistance, we are here to listen and help.",
       bookingCta: "Book a Visit via WhatsApp",
       callCta: "Call the 24-Hour Hotline",
-      note: "The online booking form is coming soon. In the meantime, please contact us via WhatsApp or phone.",
+      note: "We reply during office hours. For urgent funeral assistance, please call the 24-hour hotline.",
     },
   },
 };

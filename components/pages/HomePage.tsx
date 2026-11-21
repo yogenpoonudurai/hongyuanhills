@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/Icons";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Picture } from "@/components/ui/Picture";
+import { BookSection } from "@/components/sections/BookSection";
 import { halls } from "@/content/halls";
 import { homeCopy, type ServiceIcon } from "@/content/home";
 import { getHallPrice } from "@/content/pricing";
@@ -136,7 +137,7 @@ export function HomePage({ locale }: { locale: Locale }) {
             {copy.hero.body}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href="#contact" variant="primary" showArrow>
+            <ButtonLink href="#book" variant="primary" showArrow>
               {copy.hero.primary}
             </ButtonLink>
             <ButtonLink
@@ -211,7 +212,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                 </li>
               ))}
             </ul>
-            <ButtonLink href="#contact" variant="secondary" className="mt-8" showArrow>
+            <ButtonLink href="#book" variant="secondary" className="mt-8" showArrow>
               {copy.about.cta}
             </ButtonLink>
           </div>
@@ -238,7 +239,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                 </li>
               ))}
             </ul>
-            <ButtonLink href="#contact" variant="ghost" className="mt-8" showArrow>
+            <ButtonLink href="#book" variant="ghost" className="mt-8" showArrow>
               {copy.grounds.cta}
             </ButtonLink>
           </div>
@@ -337,7 +338,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                         </p>
                       </div>
                       <a
-                        href="#contact"
+                        href="#book"
                         className="inline-flex items-center gap-1.5 text-xs font-semibold text-jade transition hover:text-gold"
                       >
                         {copy.halls.cta}
@@ -359,7 +360,7 @@ export function HomePage({ locale }: { locale: Locale }) {
             <p className="eyebrow">{copy.preplanning.eyebrow}</p>
             <h2 className="section-title">{copy.preplanning.title}</h2>
             <p className="section-copy">{copy.preplanning.intro}</p>
-            <ButtonLink href="#contact" variant="primary" className="mt-8" showArrow>
+            <ButtonLink href="#book" variant="primary" className="mt-8" showArrow>
               {copy.preplanning.cta}
             </ButtonLink>
             <p className="mt-4 max-w-md text-xs leading-6 text-stone">
@@ -492,6 +493,8 @@ export function HomePage({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
+
+      <BookSection locale={locale} />
     </>
   );
 }

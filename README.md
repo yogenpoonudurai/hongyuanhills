@@ -10,7 +10,7 @@ Bilingual (Chinese / English) marketing site for Hong Yuan Hills (宏缘宝地),
 - No CMS. Content lives in the repository as typed TypeScript and MDX.
 - No WordPress, Framer or VPS.
 - Static-export Next.js deployed to Cloudflare Pages (free tier).
-- Forms will use one Cloudflare Pages Function at `/api/lead` (Turnstile + Resend).
+- Forms use one Cloudflare Pages Function at `/api/lead` (Turnstile + Resend).
 - Chinese at `/`; English at `/en`.
 - “From RM” prices are `null` until the client approves figures; the UI shows “Price on request”.
 - WhatsApp/phone values come from environment variables; `lib/contact.ts` has temporary live-number fallbacks.
@@ -42,7 +42,8 @@ The build is a fully static export (`next.config.ts` → `output: "export"`). Th
 npm run lint
 npm run typecheck
 npm run validate:content
-npm run test:e2e   # requires a built out/ directory
+npm run test:unit  # Vitest: /api/lead contract
+npm run test:e2e   # Playwright: requires a built out/ directory
 ```
 
 Playwright covers both locales, mobile overflow, the mobile drawer, image loading, contact CTAs and axe accessibility checks.
@@ -77,6 +78,10 @@ npx wrangler pages dev out
 ```
 
 Copy `.dev.vars.example` to `.dev.vars` for local function secrets.
+
+For local form testing, set `NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA` in `.env.local` before building, and set `TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA` in `.dev.vars`. These are Cloudflare's public always-pass test keys. Use `EMAIL_TRANSPORT=noop` so no real emails are sent.
+
+The home page includes the booking/enquiry form at `#book`. Production requires real Turnstile keys, a verified Resend domain, and `ALLOWED_ORIGINS` set to the live domain.
 
 ## Repository notes
 

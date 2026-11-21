@@ -132,7 +132,7 @@ export function Header({ locale }: { locale: Locale }) {
             <PhoneIcon className="h-[1.125rem] w-[1.125rem]" />
           </a>
           <a
-            href={`${home}#contact`}
+            href={`${home}#book`}
             className="hidden h-10 items-center rounded-full bg-gold px-5 text-xs font-semibold tracking-[0.08em] text-ink transition hover:bg-gold-light sm:inline-flex"
           >
             {copy.cta.book}
@@ -247,7 +247,7 @@ export function Header({ locale }: { locale: Locale }) {
 
             <div className="border-t border-line px-6 py-5">
               <a
-                href={`${home}#contact`}
+                href={`${home}#book`}
                 onClick={() => setOpen(false)}
                 className="flex min-h-12 items-center justify-center rounded-full bg-gold px-5 text-sm font-semibold text-ink"
               >

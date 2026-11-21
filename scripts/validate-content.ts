@@ -1,5 +1,6 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
+import { formCopy } from "../content/forms";
 import { halls } from "../content/halls";
 import { homeCopy } from "../content/home";
 import { pricing } from "../content/pricing";
@@ -81,6 +82,27 @@ for (const locale of locales) {
   nonEmpty(site.whatsapp.booking, `siteCopy.${locale}.whatsapp.booking`);
   nonEmpty(site.whatsapp.general, `siteCopy.${locale}.whatsapp.general`);
   nonEmpty(site.whatsapp.funeral, `siteCopy.${locale}.whatsapp.funeral`);
+
+  const form = formCopy[locale];
+  nonEmpty(form.eyebrow, `formCopy.${locale}.eyebrow`);
+  nonEmpty(form.title, `formCopy.${locale}.title`);
+  nonEmpty(form.intro, `formCopy.${locale}.intro`);
+  nonEmpty(form.privacy, `formCopy.${locale}.privacy`);
+  nonEmpty(form.submit, `formCopy.${locale}.submit`);
+  assert(
+    form.interests.length === 5,
+    `formCopy.${locale}.interests must have 5 options`,
+  );
+  assert(
+    form.times.length === 4,
+    `formCopy.${locale}.times must have 4 options`,
+  );
+  for (const [key, value] of Object.entries(form.errors)) {
+    nonEmpty(value, `formCopy.${locale}.errors.${key}`);
+  }
+  for (const [key, value] of Object.entries(form.success)) {
+    nonEmpty(value, `formCopy.${locale}.success.${key}`);
+  }
 }
 
 if (errors.length > 0) {
