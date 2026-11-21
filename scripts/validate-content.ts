@@ -9,6 +9,7 @@ import { groundsCopy, groundsGallery, groundsImages } from "../content/grounds";
 import { halls } from "../content/halls";
 import { homeCopy } from "../content/home";
 import { legalCopy } from "../content/legal";
+import { news, newsCopy } from "../content/news";
 import { prePlanningCopy } from "../content/preplanning";
 import { pricing } from "../content/pricing";
 import { siteCopy } from "../content/site";
@@ -174,6 +175,36 @@ for (const locale of locales) {
     nonEmpty(doc.lastUpdated, `legalCopy.${locale}.${key}.lastUpdated`);
     assert(doc.sections.length >= 5, `legalCopy.${locale}.${key} needs 5+ sections`);
   }
+}
+
+
+const newsSlugs = new Set<string>();
+for (const post of news) {
+  assert(!newsSlugs.has(post.slug), `Duplicate news slug: ${post.slug}`);
+  newsSlugs.add(post.slug);
+  assert(!Number.isNaN(Date.parse(post.date)), `news.${post.slug}.date is invalid`);
+  for (const locale of locales) {
+    nonEmpty(post.category[locale], `news.${post.slug}.category.${locale}`);
+    nonEmpty(post.title[locale], `news.${post.slug}.title.${locale}`);
+    nonEmpty(post.excerpt[locale], `news.${post.slug}.excerpt.${locale}`);
+    assert(
+      post.body[locale].length >= 1,
+      `news.${post.slug}.body.${locale} is empty`,
+    );
+  }
+  if (post.image) {
+    for (const extension of ["jpg", "webp"]) {
+      const file = path.join("public", `${post.image.src}.${extension}`);
+      assert(existsSync(file), `Missing news image: ${file}`);
+    }
+  }
+}
+
+for (const locale of locales) {
+  nonEmpty(newsCopy[locale].home.title, `newsCopy.${locale}.home.title`);
+  nonEmpty(newsCopy[locale].hub.title, `newsCopy.${locale}.hub.title`);
+  nonEmpty(newsCopy[locale].hub.meta.title, `newsCopy.${locale}.hub.meta.title`);
+  nonEmpty(newsCopy[locale].article.back, `newsCopy.${locale}.article.back`);
 }
 
 for (const price of pricing) {

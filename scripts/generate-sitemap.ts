@@ -1,6 +1,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { halls } from "../content/halls";
+import { news } from "../content/news";
 import { SITE_URL } from "../lib/metadata";
 
 type Route = { path: string; priority: string };
@@ -14,12 +15,17 @@ const routes: Route[] = [
   { path: "/services/funeral-services", priority: "0.8" },
   { path: "/services/ancestral-tablets", priority: "0.7" },
   { path: "/pre-planning", priority: "0.9" },
+  { path: "/news", priority: "0.8" },
   { path: "/contact", priority: "0.8" },
   { path: "/privacy-policy", priority: "0.3" },
   { path: "/terms", priority: "0.3" },
   ...halls.map((hall) => ({
     path: `/services/columbarium/${hall.slug}`,
     priority: "0.8",
+  })),
+  ...news.map((post) => ({
+    path: `/news/${post.slug}`,
+    priority: "0.6",
   })),
 ];
 

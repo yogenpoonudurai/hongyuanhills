@@ -2,7 +2,7 @@
 
 Bilingual (Chinese / English) marketing site for Hong Yuan Hills (宏缘宝地), a memorial park and columbarium in Kluang, Johor.
 
-**Status:** Phase 4 — all requested bilingual pages are built: home, about, grounds, columbarium, halls, funeral services, pre-planning, contact, ancestral tablets (coming soon) and legal pages.
+**Status:** Phase 5 — all bilingual pages plus a Git-based News/Updates section are built: home, about, grounds, columbarium, halls, funeral services, pre-planning, contact, ancestral tablets (coming soon) and legal pages.
 **Plan:** see [`IMPLEMENTATION.md`](./IMPLEMENTATION.md).
 
 ## Decisions
@@ -128,8 +128,9 @@ The home page includes the booking/enquiry form at `#book`. Production requires 
 - `references/` is ignored because it contains 1.3 GB of client source media.
 - Optimised public images live in `public/images/` as `.jpg` + `.webp`.
 - Content lives in `content/`; update both `zh` and `en` values.
-- Built routes in both languages: `/`, `/about`, `/services/feng-shui-grounds`, `/services/columbarium`, the four hall detail pages, `/services/funeral-services`, `/services/ancestral-tablets`, `/pre-planning`, `/contact`, `/privacy-policy` and `/terms`.
+- Built routes in both languages: `/`, `/about`, `/news` and article pages, `/services/feng-shui-grounds`, `/services/columbarium`, the four hall detail pages, `/services/funeral-services`, `/services/ancestral-tablets`, `/pre-planning`, `/contact`, `/privacy-policy` and `/terms`.
 - The home booking form and the contact/pre-planning forms use `/api/lead`; the ancestral tablets page uses the same endpoint in notify mode.
 - Hall videos currently show a “coming soon” poster until YouTube IDs are supplied.
 - Remaining: final YouTube IDs, approved price figures, client/legal review of the draft privacy policy and terms, Cloudflare deployment and DNS cutover.
 - `/services` and the old Framer URLs redirect to the closest equivalent.
+- News posts are stored in `content/news.ts` as typed bilingual content; the three launch posts are factual site updates and can be replaced with client news.

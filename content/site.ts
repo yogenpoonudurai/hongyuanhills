@@ -15,6 +15,7 @@ export const nav: NavItem[] = [
     href: "/pre-planning",
     label: { zh: "生前规划", en: "Pre-Planning" },
   },
+  { id: "news", href: "/news", label: { zh: "新闻动态", en: "News" } },
   { id: "contact", href: "/contact", label: { zh: "联系我们", en: "Contact Us" } },
 ];
 

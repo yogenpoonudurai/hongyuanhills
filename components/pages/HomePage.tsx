@@ -15,9 +15,11 @@ import {
 } from "@/components/ui/Icons";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Picture } from "@/components/ui/Picture";
+import { NewsCard } from "@/components/ui/NewsCard";
 import { BookSection } from "@/components/sections/BookSection";
 import { halls } from "@/content/halls";
 import { homeCopy, type ServiceIcon } from "@/content/home";
+import { latestNews, newsCopy } from "@/content/news";
 import { getHallPrice } from "@/content/pricing";
 import { siteCopy } from "@/content/site";
 import type { Locale } from "@/content/types";
@@ -42,6 +44,7 @@ const serviceIcons: Record<
 export function HomePage({ locale }: { locale: Locale }) {
   const copy = homeCopy[locale];
   const ui = siteCopy[locale];
+  const newsUi = newsCopy[locale];
   const isZh = locale === "zh";
 
   const localBusiness = {
@@ -361,6 +364,28 @@ export function HomePage({ locale }: { locale: Locale }) {
             })}
           </div>
           <p className="mt-6 text-xs leading-6 text-stone">{copy.halls.priceNote}</p>
+        </div>
+      </section>
+
+      <section id="news" className="container-page py-20 md:py-28">
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div className="max-w-2xl">
+            <p className="eyebrow">{newsUi.home.eyebrow}</p>
+            <h2 className="section-title">{newsUi.home.title}</h2>
+            <p className="section-copy">{newsUi.home.intro}</p>
+          </div>
+          <ButtonLink
+            href={localizedHref(locale, "/news")}
+            variant="secondary"
+            showArrow
+          >
+            {newsUi.home.cta}
+          </ButtonLink>
+        </div>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {latestNews(3).map((post) => (
+            <NewsCard key={post.slug} post={post} locale={locale} />
+          ))}
         </div>
       </section>
 

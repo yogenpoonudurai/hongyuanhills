@@ -128,6 +128,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/pre-planning/" />
   </url>
   <url>
+    <loc>https://hongyuanhills.com/news/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/news/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/news/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/news/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/en/news/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/news/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/news/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/news/" />
+  </url>
+  <url>
     <loc>https://hongyuanhills.com/contact/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -252,5 +270,59 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/danxiang-pavilion/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/danxiang-pavilion/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/danxiang-pavilion/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/news/online-visit-requests/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/news/online-visit-requests/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/news/online-visit-requests/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/news/online-visit-requests/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/en/news/online-visit-requests/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/news/online-visit-requests/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/news/online-visit-requests/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/news/online-visit-requests/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/news/ancestral-tablets-coming-soon/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/news/ancestral-tablets-coming-soon/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/news/ancestral-tablets-coming-soon/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/news/ancestral-tablets-coming-soon/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/en/news/ancestral-tablets-coming-soon/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/news/ancestral-tablets-coming-soon/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/news/ancestral-tablets-coming-soon/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/news/ancestral-tablets-coming-soon/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/news/hall-video-tours-coming-soon/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/news/hall-video-tours-coming-soon/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/news/hall-video-tours-coming-soon/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/news/hall-video-tours-coming-soon/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/en/news/hall-video-tours-coming-soon/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/news/hall-video-tours-coming-soon/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/news/hall-video-tours-coming-soon/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/news/hall-video-tours-coming-soon/" />
   </url>
 </urlset>
