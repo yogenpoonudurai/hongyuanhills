@@ -17,6 +17,7 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Picture } from "@/components/ui/Picture";
 import { NewsCard } from "@/components/ui/NewsCard";
 import { BookSection } from "@/components/sections/BookSection";
+import { SocialSection } from "@/components/sections/SocialSection";
 import { halls } from "@/content/halls";
 import { homeCopy, type ServiceIcon } from "@/content/home";
 import { latestNews, newsCopy } from "@/content/news";
@@ -388,6 +389,8 @@ export function HomePage({ locale }: { locale: Locale }) {
           ))}
         </div>
       </section>
+
+      <SocialSection locale={locale} />
 
       <section id="pre-planning" className="container-page py-20 md:py-28">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">

@@ -11,6 +11,8 @@ import { contact, mapsUrl, telHref, waLink } from "@/lib/contact";
 import { homeHref, localizedHref } from "@/lib/i18n";
 import { LanguageSwitchLink } from "@/components/layout/LanguageSwitchLink";
 import { ThemeSwitch } from "@/components/layout/ThemeSwitch";
+import { FacebookIcon, InstagramIcon } from "@/components/ui/Icons";
+import { socialProfiles } from "@/content/social";
 
 export function Footer({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
@@ -37,6 +39,26 @@ export function Footer({ locale }: { locale: Locale }) {
             label={copy.otherLangLabel}
             className="mt-5 inline-flex text-xs font-semibold tracking-[0.14em] text-gold-light transition hover:text-ivory"
           />
+          <div className="mt-5 flex items-center gap-2">
+            <a
+              href={socialProfiles.facebook.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-ivory/20 text-ivory/70 transition hover:border-gold-light hover:text-gold-light"
+            >
+              <FacebookIcon className="h-4 w-4" />
+            </a>
+            <a
+              href={socialProfiles.instagram.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-ivory/20 text-ivory/70 transition hover:border-gold-light hover:text-gold-light"
+            >
+              <InstagramIcon className="h-4 w-4" />
+            </a>
+          </div>
         </div>
 
         <div>

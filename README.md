@@ -88,6 +88,15 @@ Playwright covers both locales, mobile overflow, the mobile drawer, image loadin
 - English display/body fonts are self-hosted Cormorant Garamond and Source Sans 3 via `next/font/google`.
 - If the client supplies a specific licensed font, replace `cnFont` in `lib/fonts.ts` and keep the same `--font-cn` variable.
 
+
+## Social links
+
+- Facebook: `https://www.facebook.com/hyhills.my/`
+- Instagram: `https://www.instagram.com/hongyuanhills/`
+- The home page has a native "Follow Us" section and the footer has icon links. There are no iframes, platform scripts, cookies or paid widgets.
+- To show actual post cards, either add curated post URLs/images to `content/social.ts`, or wire a build-time Meta Graph API sync (Instagram Business/Creator + Facebook Page, long-lived token). The Graph API route keeps content static and avoids client-side Meta scripts.
+- Public Instagram HTML is login-gated, so a real feed cannot be scraped reliably or within platform terms.
+
 ## Environment
 
 Copy `.env.example` to `.env.local` and fill in what the client supplies:

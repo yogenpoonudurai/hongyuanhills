@@ -13,6 +13,7 @@ import { news, newsCopy } from "../content/news";
 import { prePlanningCopy } from "../content/preplanning";
 import { pricing } from "../content/pricing";
 import { siteCopy } from "../content/site";
+import { socialCopy, socialProfiles } from "../content/social";
 import { tabletsCopy } from "../content/tablets";
 
 const locales = ["zh", "en"] as const;
@@ -205,6 +206,25 @@ for (const locale of locales) {
   nonEmpty(newsCopy[locale].hub.title, `newsCopy.${locale}.hub.title`);
   nonEmpty(newsCopy[locale].hub.meta.title, `newsCopy.${locale}.hub.meta.title`);
   nonEmpty(newsCopy[locale].article.back, `newsCopy.${locale}.article.back`);
+}
+
+
+for (const profile of Object.values(socialProfiles)) {
+  assert(
+    profile.url.startsWith("https://www.facebook.com/") ||
+      profile.url.startsWith("https://www.instagram.com/"),
+    `social profile URL is invalid: ${profile.url}`,
+  );
+  nonEmpty(profile.handle, `social profile handle is empty`);
+}
+
+for (const locale of locales) {
+  for (const [key, value] of Object.entries(socialCopy[locale].section)) {
+    nonEmpty(value, `socialCopy.${locale}.section.${key}`);
+  }
+  nonEmpty(socialCopy[locale].facebook.label, `socialCopy.${locale}.facebook.label`);
+  nonEmpty(socialCopy[locale].instagram.label, `socialCopy.${locale}.instagram.label`);
+  nonEmpty(socialCopy[locale].newsCta, `socialCopy.${locale}.newsCta`);
 }
 
 for (const price of pricing) {
