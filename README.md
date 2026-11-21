@@ -20,19 +20,49 @@ Bilingual (Chinese / English) marketing site for Hong Yuan Hills (宏缘宝地),
 - Node.js 22 LTS
 - npm
 
-## Local development
+## Run locally
+
+### Full local preview (recommended)
 
 ```sh
 npm install
+npm run preview:local
+```
+
+Open **http://localhost:8788**.
+
+This builds with Cloudflare’s public Turnstile test site key and starts the Cloudflare Pages runtime, so the static pages **and** the `/api/lead` form endpoint work. `.dev.vars` is configured with the test Turnstile secret, `EMAIL_TRANSPORT=noop` and a test inbox, so submitting the form shows the success state but sends no real email.
+
+### Hot-reload UI only
+
+```sh
 npm run dev
 ```
 
-## Build and preview
+Open http://localhost:3000. This is the fastest way to edit UI, but Cloudflare Pages Functions are not available, so `/api/lead` will not work. Use the full preview to test forms.
+
+### Reuse an existing build
 
 ```sh
-npm run build      # validates content, generates sitemap, outputs to out/
-npm run preview    # serves out/ on http://localhost:3000
+npm run dev:pages
 ```
+
+Serves the existing `out/` on http://localhost:8788. Run `npm run preview:local` again after changing content.
+
+### Real email locally
+
+Edit `.dev.vars`:
+
+```bash
+EMAIL_TRANSPORT=resend
+RESEND_API_KEY=re_...
+FROM_EMAIL=website@your-verified-domain.com
+LEAD_NOTIFICATION_EMAIL=your-inbox@example.com
+```
+
+Use a real Turnstile site key in the build command and the matching secret in `.dev.vars`.
+
+Run `npm run build` (without the test-key env) before running Playwright or producing the deployment artifact.
 
 The build is a fully static export (`next.config.ts` → `output: "export"`). There is no Next.js server runtime.
 
