@@ -1,0 +1,9 @@
+# Local Cloudflare Pages Functions secrets for `wrangler pages dev`.
+# Copy to `.dev.vars` (gitignored) and fill in test values.
+LEAD_NOTIFICATION_EMAIL=
+FROM_EMAIL=
+RESEND_API_KEY=
+ALLOWED_ORIGINS=http://localhost:4175
+FORM_ENABLED=true
+EMAIL_TRANSPORT=noop
+TURNSTILE_SECRET_KEY=

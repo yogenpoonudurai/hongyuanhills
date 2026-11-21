@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1c2a25;
+  --color-jade: #1f4a3a;
+  --color-jade-deep: #123328;
+  --color-gold: #b08d57;
+  --color-gold-light: #d6c09a;
+  --color-ivory: #f7f3ea;
+  --color-paper: #fbf8f1;
+  --color-stone: #5f665f;
+  --color-gold-dark: #8c6a3b;
+  --color-line: #ded6c6;
+
+  --font-display: var(--font-cormorant), "Cormorant Garamond",
+    "LXGW WenKai", "Kaiti SC", "STKaiti", "KaiTi", "Noto Serif SC", serif;
+  --font-body: var(--font-source-sans), "Source Sans 3", "Inter",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
+    sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  [lang="zh-Hans"] body {
+    line-height: 1.8;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: var(--color-gold-light);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--color-jade);
+  }
+
+  .section-title {
+    margin-top: 0.75rem;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    color: var(--color-ink);
+  }
+
+  .section-copy {
+    margin-top: 1.25rem;
+    max-width: 42rem;
+    font-size: 1.0625rem;
+    line-height: 1.9;
+    color: color-mix(in srgb, var(--color-ink) 78%, white);
+  }
+
+  .gold-rule {
+    width: 3rem;
+    height: 1px;
+    background-color: var(--color-gold);
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
