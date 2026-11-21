@@ -16,7 +16,7 @@ import { formatFromPrice } from "@/lib/pricing";
 export function ColumbariumPage({ locale }: { locale: Locale }) {
   const copy = columbariumCopy[locale];
   const ui = siteCopy[locale];
-  const bookHref = localizedHref(locale, "/#book");
+  const bookHref = localizedHref(locale, "/contact#form");
   const home = homeHref(locale);
   const servicesHref = localizedHref(locale, "/#services");
   const whatsappHref = waLink(ui.whatsapp.general);

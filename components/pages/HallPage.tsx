@@ -16,7 +16,7 @@ import { formatFromPrice, priceDisclaimer } from "@/lib/pricing";
 
 export function HallPage({ hall, locale }: { hall: Hall; locale: Locale }) {
   const ui = siteCopy[locale];
-  const bookHref = localizedHref(locale, "/#book");
+  const bookHref = localizedHref(locale, "/contact#form");
   const whatsappHref = waLink(ui.whatsapp.general);
   const price = getHallPrice(hall.slug);
   const firstGalleryImage =

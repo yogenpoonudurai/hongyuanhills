@@ -16,7 +16,7 @@ import { SITE_URL } from "@/lib/metadata";
 export function GroundsPage({ locale }: { locale: Locale }) {
   const copy = groundsCopy[locale];
   const ui = siteCopy[locale];
-  const bookHref = localizedHref(locale, "/#book");
+  const bookHref = localizedHref(locale, "/contact#form");
   const home = homeHref(locale);
   const servicesHref = localizedHref(locale, "/#services");
   const whatsappHref = waLink(ui.whatsapp.general);

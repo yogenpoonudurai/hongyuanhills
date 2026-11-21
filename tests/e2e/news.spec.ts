@@ -52,7 +52,7 @@ test.describe("news and updates", () => {
     await page.goto("/");
     const section = page.locator("#news");
     await expect(section.getByRole("heading", { name: "最新消息" })).toBeVisible();
-    await expect(section.locator("article")).toHaveCount(3);
+    await expect(section.locator("time")).toHaveCount(3);
     await expect(section.locator(`a[href*="/news/${articleSlug}"]`).first()).toBeVisible();
   });
 

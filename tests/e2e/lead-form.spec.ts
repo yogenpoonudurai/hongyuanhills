@@ -2,8 +2,8 @@ import { expect, test } from "@playwright/test";
 
 test.describe("booking form", () => {
   test("shows validation errors for required fields", async ({ page }) => {
-    await page.goto("/");
-    await page.locator("#book").scrollIntoViewIfNeeded();
+    await page.goto("/contact");
+    await page.locator("#form").scrollIntoViewIfNeeded();
     await page.getByRole("button", { name: "提交预约" }).click();
 
     await expect(page.getByText("请填写姓名。")).toBeVisible();
@@ -30,8 +30,8 @@ test.describe("booking form", () => {
       });
     });
 
-    await page.goto("/");
-    await page.locator("#book").scrollIntoViewIfNeeded();
+    await page.goto("/contact");
+    await page.locator("#form").scrollIntoViewIfNeeded();
     await page.getByLabel("姓名").fill("Test User");
     await page.getByLabel("联络电话").fill("+60 12-345 6789");
     await page.getByRole("checkbox").check();
@@ -55,14 +55,14 @@ test.describe("booking form", () => {
       }),
     );
 
-    await page.goto("/");
-    await page.locator("#book").scrollIntoViewIfNeeded();
+    await page.goto("/contact");
+    await page.locator("#form").scrollIntoViewIfNeeded();
     await page.getByLabel("姓名").fill("Test User");
     await page.getByLabel("联络电话").fill("+60 12-345 6789");
     await page.getByRole("checkbox").check();
     await page.getByRole("button", { name: "提交预约" }).click();
 
-    const alert = page.locator("#book").getByRole("alert");
+    const alert = page.locator("#form").getByRole("alert");
     await expect(alert).toContainText("如果表格无法提交");
     await expect(alert.getByRole("link", { name: "WhatsApp" })).toHaveAttribute(
       "href",

@@ -32,7 +32,7 @@ export function MobileActionBar({ locale }: { locale: Locale }) {
           WhatsApp
         </a>
         <a
-          href={localizedHref(locale, "/#book")}
+          href={localizedHref(locale, "/contact#form")}
           aria-label={copy.cta.book}
           className="flex h-14 flex-col items-center justify-center gap-1 text-[10px] font-semibold tracking-wide text-jade"
         >

@@ -14,7 +14,7 @@ import { SITE_URL } from "@/lib/metadata";
 export function AboutPage({ locale }: { locale: Locale }) {
   const copy = aboutCopy[locale];
   const ui = siteCopy[locale];
-  const bookHref = localizedHref(locale, "/#book");
+  const bookHref = localizedHref(locale, "/contact#form");
   const whatsappHref = waLink(ui.whatsapp.general);
 
   const breadcrumbs = [

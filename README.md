@@ -145,7 +145,7 @@ Copy `.dev.vars.example` to `.dev.vars` for local function secrets.
 
 For local form testing, set `NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA` in `.env.local` before building, and set `TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA` in `.dev.vars`. These are Cloudflare's public always-pass test keys. Use `EMAIL_TRANSPORT=noop` so no real emails are sent.
 
-The home page includes the booking/enquiry form at `#book`. Production requires real Turnstile keys, a verified Resend domain, and `ALLOWED_ORIGINS` set to the live domain.
+The home page includes the booking/enquiry form at `/contact#form`. Production requires real Turnstile keys, a verified Resend domain, and `ALLOWED_ORIGINS` set to the live domain.
 
 ## Repository notes
 
