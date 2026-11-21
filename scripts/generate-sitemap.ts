@@ -1,11 +1,20 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { halls } from "../content/halls";
 import { SITE_URL } from "../lib/metadata";
 
 type Route = { path: string; priority: string };
 
 // Extend this list as interior pages ship.
-const routes: Route[] = [{ path: "/", priority: "1.0" }];
+const routes: Route[] = [
+  { path: "/", priority: "1.0" },
+  { path: "/services/feng-shui-grounds", priority: "0.9" },
+  { path: "/services/columbarium", priority: "0.9" },
+  ...halls.map((hall) => ({
+    path: `/services/columbarium/${hall.slug}`,
+    priority: "0.8",
+  })),
+];
 
 const today = new Date().toISOString().slice(0, 10);
 

@@ -8,11 +8,12 @@ import {
   WhatsAppIcon,
 } from "@/components/ui/Icons";
 import { contact, mapsUrl, telHref, waLink } from "@/lib/contact";
+import { homeHref, localizedHref } from "@/lib/i18n";
+import { LanguageSwitchLink } from "@/components/layout/LanguageSwitchLink";
 
 export function Footer({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
-  const home = locale === "zh" ? "/" : "/en";
-  const switchHref = locale === "zh" ? "/en" : "/";
+  const home = homeHref(locale);
   const year = new Date().getFullYear();
 
   return (
@@ -30,12 +31,11 @@ export function Footer({ locale }: { locale: Locale }) {
           <p className="mt-5 max-w-xs text-sm leading-7 text-ivory/70">
             {copy.tagline}
           </p>
-          <a
-            href={switchHref}
+          <LanguageSwitchLink
+            locale={locale}
+            label={copy.otherLangLabel}
             className="mt-5 inline-flex text-xs font-semibold tracking-[0.14em] text-gold-light transition hover:text-ivory"
-          >
-            {copy.otherLangLabel}
-          </a>
+          />
         </div>
 
         <div>
@@ -46,7 +46,7 @@ export function Footer({ locale }: { locale: Locale }) {
             {nav.map((item) => (
               <li key={item.id}>
                 <a
-                  href={`${home}${item.hash}`}
+                  href={localizedHref(locale, item.href)}
                   className="text-sm text-ivory/75 transition hover:text-gold-light"
                 >
                   {item.label[locale]}

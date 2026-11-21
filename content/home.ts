@@ -155,7 +155,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       title: "四座殿堂，四种祝福。",
       intro:
         "冷气骨灰殿与半开放式骨灰殿，庄严、整洁、宁静。每一座殿堂都有独特的佛像、面板设计与祝福意涵。",
-      cta: "咨询详情",
+      cta: "了解详情",
       priceNote: "实际价格视选择、供应情况及条款而定。",
     },
     preplanning: {
@@ -305,7 +305,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       title: "Four halls, four expressions of blessing.",
       intro:
         "Air-conditioned and semi-open columbarium halls, each with its own deity, panel design and spiritual character.",
-      cta: "Enquire",
+      cta: "View hall",
       priceNote:
         "Actual price depends on selection, availability and terms.",
     },

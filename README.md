@@ -2,7 +2,7 @@
 
 Bilingual (Chinese / English) marketing site for Hong Yuan Hills (宏缘宝地), a memorial park and columbarium in Kluang, Johor.
 
-**Status:** Phase 1 — scaffold, design tokens, bilingual shell and home page.
+**Status:** Phase 3 — bilingual home, booking form, Penglai grounds, columbarium hub and four hall detail pages.
 **Plan:** see [`IMPLEMENTATION.md`](./IMPLEMENTATION.md).
 
 ## Decisions
@@ -88,4 +88,6 @@ The home page includes the booking/enquiry form at `#book`. Production requires 
 - `references/` is ignored because it contains 1.3 GB of client source media.
 - Optimised public images live in `public/images/` as `.jpg` + `.webp`.
 - Content lives in `content/`; update both `zh` and `en` values.
-- Legal pages, hall detail pages, forms and the remaining service pages are later phases.
+- Built routes: `/`, `/en`, `/services/feng-shui-grounds`, `/services/columbarium`, and `/services/columbarium/{zizai-pavilion,benyuan-pavilion,sanyuan-hall,danxiang-pavilion}` in both languages.
+- Hall videos currently show a “coming soon” poster until YouTube IDs are supplied.
+- Remaining: About, funeral services, pre-planning, contact, legal pages, final video IDs and deployment.

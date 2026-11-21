@@ -10,14 +10,26 @@ export interface ImageRef {
   height: number;
 }
 
+export interface HallPanel {
+  name: L<string>;
+  body: L<string>;
+}
+
 export interface Hall {
   slug: string;
   name: L<string>;
   tagline: L<string>;
   summary: L<string>;
+  intro: L<string>;
   image: ImageRef;
+  heroImage: ImageRef;
   accent: string;
-  panels: L<string[]>;
+  deity?: { name: L<string>; body: L<string> };
+  panelDetails: HallPanel[];
+  amenities: L<string[]>;
+  gallery: ImageRef[];
+  video: { youtubeId?: string; poster: ImageRef; title: L<string> };
+  locationNote: L<string>;
 }
 
 export type PriceService = "grounds" | "columbarium" | "funeral" | "tablets";

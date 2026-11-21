@@ -140,3 +140,11 @@ export function ExternalLinkIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function PlayIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M8 5v14l11-7-11-7z" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}

@@ -2,41 +2,41 @@ import type { L, Locale } from "./types";
 
 export interface NavItem {
   id: string;
-  hash: string;
+  href: string;
   label: L<string>;
 }
 
 export const nav: NavItem[] = [
-  { id: "about", hash: "#about", label: { zh: "关于我们", en: "About Us" } },
-  { id: "services", hash: "#services", label: { zh: "服务项目", en: "Our Services" } },
-  { id: "halls", hash: "#halls", label: { zh: "骨灰殿", en: "Columbarium" } },
+  { id: "about", href: "/#about", label: { zh: "关于我们", en: "About Us" } },
+  { id: "services", href: "/#services", label: { zh: "服务项目", en: "Our Services" } },
+  { id: "halls", href: "/services/columbarium", label: { zh: "骨灰殿", en: "Columbarium" } },
   {
     id: "pre-planning",
-    hash: "#pre-planning",
+    href: "/#pre-planning",
     label: { zh: "生前规划", en: "Pre-Planning" },
   },
-  { id: "contact", hash: "#contact", label: { zh: "联系我们", en: "Contact Us" } },
+  { id: "contact", href: "/#contact", label: { zh: "联系我们", en: "Contact Us" } },
 ];
 
 export const servicesMenu: NavItem[] = [
   {
     id: "grounds",
-    hash: "#grounds",
+    href: "/services/feng-shui-grounds",
     label: { zh: "风水福地 · 蓬莱宝地", en: "Feng Shui Grounds · Penglai" },
   },
   {
     id: "columbarium",
-    hash: "#halls",
+    href: "/services/columbarium",
     label: { zh: "骨灰殿 · 四座殿堂", en: "Columbarium · Four Halls" },
   },
   {
     id: "funeral",
-    hash: "#services",
+    href: "/#book",
     label: { zh: "殡仪服务配套", en: "Funeral Services" },
   },
   {
     id: "tablets",
-    hash: "#contact",
+    href: "/#book",
     label: { zh: "神主牌 · 即将推出", en: "Ancestral Tablets · Coming Soon" },
   },
 ];

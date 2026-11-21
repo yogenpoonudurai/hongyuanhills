@@ -22,7 +22,9 @@ import { getHallPrice } from "@/content/pricing";
 import { siteCopy } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { contact, mapsUrl, telHref, waLink } from "@/lib/contact";
+import { jsonLd } from "@/lib/jsonld";
 import { SITE_URL } from "@/lib/metadata";
+import { localizedHref } from "@/lib/i18n";
 import { formatFromPrice } from "@/lib/pricing";
 import { cn } from "@/lib/utils";
 
@@ -36,11 +38,6 @@ const serviceIcons: Record<
   calendar: CalendarIcon,
 };
 
-function jsonLd(data: unknown) {
-  return {
-    __html: JSON.stringify(data).replace(/</g, "\\u003c"),
-  };
-}
 
 export function HomePage({ locale }: { locale: Locale }) {
   const copy = homeCopy[locale];
@@ -119,8 +116,8 @@ export function HomePage({ locale }: { locale: Locale }) {
         <Picture
           src="/images/hero"
           alt={copy.hero.imageAlt}
-          width={1920}
-          height={1080}
+          width={1600}
+          height={900}
           priority
           className="absolute inset-0 -z-10"
           imgClassName="h-full w-full object-cover opacity-70"
@@ -338,7 +335,10 @@ export function HomePage({ locale }: { locale: Locale }) {
                         </p>
                       </div>
                       <a
-                        href="#book"
+                        href={localizedHref(
+                          locale,
+                          `/services/columbarium/${hall.slug}`,
+                        )}
                         className="inline-flex items-center gap-1.5 text-xs font-semibold text-jade transition hover:text-gold"
                       >
                         {copy.halls.cta}

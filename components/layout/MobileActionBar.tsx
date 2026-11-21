@@ -2,11 +2,10 @@ import { PhoneIcon, WhatsAppIcon, CalendarIcon } from "@/components/ui/Icons";
 import { siteCopy } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { contact, telHref, waLink } from "@/lib/contact";
+import { localizedHref } from "@/lib/i18n";
 
 export function MobileActionBar({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
-  const home = locale === "zh" ? "/" : "/en";
-
   return (
     <nav
       aria-label={locale === "zh" ? "快捷联系" : "Quick contact"}
@@ -33,7 +32,7 @@ export function MobileActionBar({ locale }: { locale: Locale }) {
           WhatsApp
         </a>
         <a
-          href={`${home}#book`}
+          href={localizedHref(locale, "/#book")}
           aria-label={copy.cta.book}
           className="flex h-14 flex-col items-center justify-center gap-1 text-[10px] font-semibold tracking-wide text-jade"
         >

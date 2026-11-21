@@ -13,20 +13,16 @@ import {
 import { nav, servicesMenu, siteCopy } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { contact, telHref, waLink } from "@/lib/contact";
+import { alternateHref, homeHref, localizedHref } from "@/lib/i18n";
 
 export function Header({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
-  const pathname = usePathname();
-  const home = locale === "zh" ? "/" : "/en";
+  const pathname = usePathname() ?? "/";
+  const home = homeHref(locale);
   const [open, setOpen] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
 
-  const switchHref =
-    locale === "zh"
-      ? pathname === "/"
-        ? "/en"
-        : `/en${pathname}`
-      : pathname.replace(/^\/en/, "") || "/";
+  const switchHref = alternateHref(locale, pathname);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -98,7 +94,7 @@ export function Header({ locale }: { locale: Locale }) {
           {nav.map((item) => (
             <a
               key={item.id}
-              href={`${home}${item.hash}`}
+              href={localizedHref(locale, item.href)}
               className="text-[13px] font-medium tracking-[0.08em] text-ink/80 transition hover:text-jade"
             >
               {item.label[locale]}
@@ -113,7 +109,7 @@ export function Header({ locale }: { locale: Locale }) {
               {servicesMenu.map((item) => (
                 <a
                   key={item.id}
-                  href={`${home}${item.hash}`}
+                  href={localizedHref(locale, item.href)}
                   className="block px-3 py-2.5 text-[13px] text-ink/80 transition hover:bg-ivory hover:text-jade"
                 >
                   {item.label[locale]}
@@ -132,7 +128,7 @@ export function Header({ locale }: { locale: Locale }) {
             <PhoneIcon className="h-[1.125rem] w-[1.125rem]" />
           </a>
           <a
-            href={`${home}#book`}
+            href={localizedHref(locale, "/#book")}
             className="hidden h-10 items-center rounded-full bg-gold px-5 text-xs font-semibold tracking-[0.08em] text-ink transition hover:bg-gold-light sm:inline-flex"
           >
             {copy.cta.book}
@@ -193,7 +189,7 @@ export function Header({ locale }: { locale: Locale }) {
                 {nav.map((item) => (
                   <a
                     key={item.id}
-                    href={`${home}${item.hash}`}
+                    href={localizedHref(locale, item.href)}
                     onClick={() => setOpen(false)}
                     className="block border-b border-line/60 py-3.5 text-[15px] font-medium text-ink"
                   >
@@ -209,7 +205,7 @@ export function Header({ locale }: { locale: Locale }) {
                 {servicesMenu.map((item) => (
                   <a
                     key={item.id}
-                    href={`${home}${item.hash}`}
+                    href={localizedHref(locale, item.href)}
                     onClick={() => setOpen(false)}
                     className="block py-2.5 text-[14px] text-ink/75"
                   >
@@ -247,7 +243,7 @@ export function Header({ locale }: { locale: Locale }) {
 
             <div className="border-t border-line px-6 py-5">
               <a
-                href={`${home}#book`}
+                href={localizedHref(locale, "/#book")}
                 onClick={() => setOpen(false)}
                 className="flex min-h-12 items-center justify-center rounded-full bg-gold px-5 text-sm font-semibold text-ink"
               >

@@ -1,6 +1,8 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
+import { columbariumCopy } from "../content/columbarium";
 import { formCopy } from "../content/forms";
+import { groundsCopy, groundsGallery, groundsImages } from "../content/grounds";
 import { halls } from "../content/halls";
 import { homeCopy } from "../content/home";
 import { pricing } from "../content/pricing";
@@ -29,16 +31,86 @@ for (const hall of halls) {
     nonEmpty(hall.tagline[locale], `${hall.slug}.tagline.${locale}`);
     nonEmpty(hall.summary[locale], `${hall.slug}.summary.${locale}`);
     nonEmpty(hall.image.alt[locale], `${hall.slug}.image.alt.${locale}`);
+    nonEmpty(hall.intro[locale], `${hall.slug}.intro.${locale}`);
+    nonEmpty(hall.locationNote[locale], `${hall.slug}.locationNote.${locale}`);
     assert(
-      hall.panels[locale].length > 0,
-      `${hall.slug}.panels.${locale} is empty`,
+      hall.panelDetails.length > 0,
+      `${hall.slug}.panelDetails is empty`,
     );
+    for (const panel of hall.panelDetails) {
+      nonEmpty(panel.name[locale], `${hall.slug}.panel.name.${locale}`);
+      nonEmpty(panel.body[locale], `${hall.slug}.panel.body.${locale}`);
+    }
+    assert(
+      hall.amenities[locale].length > 0,
+      `${hall.slug}.amenities.${locale} is empty`,
+    );
+    assert(hall.gallery.length > 0, `${hall.slug}.gallery is empty`);
+    for (const image of hall.gallery) {
+      nonEmpty(image.alt[locale], `${hall.slug}.gallery.alt.${locale}`);
+    }
+    if (hall.deity) {
+      nonEmpty(hall.deity.name[locale], `${hall.slug}.deity.name.${locale}`);
+      nonEmpty(hall.deity.body[locale], `${hall.slug}.deity.body.${locale}`);
+    }
+    nonEmpty(hall.video.title[locale], `${hall.slug}.video.title.${locale}`);
   }
 
-  for (const extension of ["jpg", "webp"]) {
-    const file = path.join("public", `${hall.image.src}.${extension}`);
-    assert(existsSync(file), `Missing hall image: ${file}`);
+  for (const image of [hall.image, hall.heroImage, hall.video.poster, ...hall.gallery]) {
+    for (const extension of ["jpg", "webp"]) {
+      const file = path.join("public", `${image.src}.${extension}`);
+      assert(existsSync(file), `Missing image: ${file}`);
+    }
   }
+}
+
+for (const [name, image] of Object.entries(groundsImages)) {
+  for (const extension of ["jpg", "webp"]) {
+    const file = path.join("public", `${image.src}.${extension}`);
+    assert(existsSync(file), `Missing grounds image (${name}): ${file}`);
+  }
+}
+for (const image of groundsGallery) {
+  for (const extension of ["jpg", "webp"]) {
+    const file = path.join("public", `${image.src}.${extension}`);
+    assert(existsSync(file), `Missing grounds gallery image: ${file}`);
+  }
+}
+
+for (const locale of locales) {
+  const grounds = groundsCopy[locale];
+  nonEmpty(grounds.meta.title, `groundsCopy.${locale}.meta.title`);
+  nonEmpty(grounds.meta.description, `groundsCopy.${locale}.meta.description`);
+  nonEmpty(grounds.hero.title, `groundsCopy.${locale}.hero.title`);
+  assert(
+    grounds.chapters.length >= 5,
+    `groundsCopy.${locale}.chapters needs 5+ items`,
+  );
+  assert(
+    grounds.siteSelection.body.length >= 2,
+    `groundsCopy.${locale}.siteSelection.body needs 2+ paragraphs`,
+  );
+  assert(
+    grounds.orientations.rows.length >= 3,
+    `groundsCopy.${locale}.orientations.rows needs 3+ rows`,
+  );
+  assert(
+    grounds.pond.sections.length >= 3,
+    `groundsCopy.${locale}.pond.sections needs 3+ sections`,
+  );
+  assert(
+    grounds.faq.items.length >= 3,
+    `groundsCopy.${locale}.faq needs 3+ items`,
+  );
+
+  const columbarium = columbariumCopy[locale];
+  nonEmpty(columbarium.meta.title, `columbariumCopy.${locale}.meta.title`);
+  nonEmpty(columbarium.meta.description, `columbariumCopy.${locale}.meta.description`);
+  nonEmpty(columbarium.hero.title, `columbariumCopy.${locale}.hero.title`);
+  assert(
+    columbarium.howToChoose.points.length >= 3,
+    `columbariumCopy.${locale}.howToChoose needs 3+ points`,
+  );
 }
 
 for (const price of pricing) {
