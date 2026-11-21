@@ -716,24 +716,31 @@ Run before build: `npm run validate:content`.
 
 ### 10.1 Direction
 
-- “Quiet luxury” / Chinese landscape scroll: ivory paper, deep jade, warm gold, soft light.
-- Generous whitespace, editorial typography, full-bleed photography.
-- Rounded, soft type for Chinese headings; calm, readable body.
+- **Imperial Stone & Bronze (approved default):** porcelain ivory, antique bronze, dark stone, restrained heritage red and Chinese heritage details.
+- A distinguished memorial sanctuary — not a golf resort or luxury hotel. Quiet, warm, grounded and readable.
+- Generous whitespace, editorial typography, verified Hong Yuan Hills photography.
+- Rounded, soft Chinese type; calm, readable body.
 - Subtle motion: fades and 8px translations; no flashy parallax.
+- **Ivory** remains an alternate light theme via the footer theme switch.
+- Design kit/moodboard are art-direction references only. Production imagery must be verified Hong Yuan Hills photography, facilities and branding.
 
 ### 10.2 Color tokens
 
-| Token | Value | Usage |
+| Token | Imperial value | Usage |
 |---|---|---|
-| `--ink` | `#1C2A25` | Primary text |
-| `--jade` | `#1F4A3A` | Brand, links |
-| `--jade-deep` | `#123328` | Footer, dark sections |
-| `--gold` | `#B08D57` | Accents, rules, CTA |
-| `--gold-light` | `#D6C09A` | Hover, borders |
-| `--ivory` | `#F7F3EA` | Page background |
-| `--paper` | `#FBF8F1` | Cards |
-| `--stone` | `#8B8F86` | Muted text |
-| `--line` | `#DED6C6` | Borders |
+| `--ink` | `#201D15` | Primary text |
+| `--stone` | `#6B6458` | Muted text |
+| `--jade` | `#6B5338` | Links; token retained, now antique bronze |
+| `--jade-deep` | `#1C1A14` | Footer and dark sanctuary bands |
+| `--gold` | `#A88050` | Antique bronze accents/CTA |
+| `--gold-light` | `#D0C0A8` | Pale bronze/hover |
+| `--gold-dark` | `#7A5A2E` | Bronze text on ivory |
+| `--paper` | `#F5EFE6` | Page background |
+| `--ivory` | `#F8F0E8` | Porcelain ivory surfaces/light text |
+| `--line` | `#D8CBB8` | Bronze borders |
+| `--seal` | `#702828` | Restrained seal and tiny accents only |
+
+Ivory alternate: ink `#1C2A25`, jade `#1F4A3A`, deep `#123328`, gold `#B08D57`, ivory `#F7F3EA`, paper `#FBF8F1`, stone `#5F665F`, line `#DED6C6`.
 | Zizai accent | `#C9A227` + `#3E6B8A` | Hall page |
 | Benyuan accent | `#A66B3A` | Hall page |
 | Sanyuan accent | `#6E8B7B` + `#B9D6D0` | Hall page |
@@ -745,12 +752,12 @@ Verify contrast (4.5:1) for body text and gold-on-ivory combinations.
 
 | Role | Chinese | English |
 |---|---|---|
-| Display/headings | LXGW WenKai (subset) or licensed Kaiti | Cormorant Garamond |
-| Body | System CJK stack: `PingFang SC`, `Hiragino Sans GB`, `Microsoft YaHei`, `Noto Sans CJK SC` | Source Sans 3 |
+| Display/headings | LXGW WenKai subset (Kaiti-style) or licensed Kaiti | Cormorant Garamond |
+| Body | LXGW WenKai subset, then system CJK fallback | Source Sans 3 |
 | UI/labels | Same as body | Source Sans 3 |
-| Quotes | LXGW WenKai italic/subset | Cormorant Garamond italic |
+| Quotes | LXGW WenKai subset | Cormorant Garamond italic |
 
-**Font budget:** ≤300 KB initial webfont payload. Subset carefully. If the client insists on Kaiti for body, use `cn-font-split` unicode-range slicing and raise the budget with explicit approval.
+**Font budget:** ≤400 KB initial webfont payload. The current LXGW WenKai subset is ~221 KB. Re-subset when new Chinese glyphs are added; if the client supplies a licensed font, replace `cnFont` in `lib/fonts.ts`.
 
 ### 10.4 Scale and spacing
 
