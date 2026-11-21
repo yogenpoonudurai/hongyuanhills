@@ -1,12 +1,18 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
+import { aboutCopy, aboutImages } from "../content/about";
 import { columbariumCopy } from "../content/columbarium";
+import { contactCopy } from "../content/contact";
 import { formCopy } from "../content/forms";
+import { funeralCopy } from "../content/funeral";
 import { groundsCopy, groundsGallery, groundsImages } from "../content/grounds";
 import { halls } from "../content/halls";
 import { homeCopy } from "../content/home";
+import { legalCopy } from "../content/legal";
+import { prePlanningCopy } from "../content/preplanning";
 import { pricing } from "../content/pricing";
 import { siteCopy } from "../content/site";
+import { tabletsCopy } from "../content/tablets";
 
 const locales = ["zh", "en"] as const;
 const errors: string[] = [];
@@ -113,6 +119,63 @@ for (const locale of locales) {
   );
 }
 
+
+for (const image of [aboutImages.hero, ...aboutImages.gallery]) {
+  for (const extension of ["jpg", "webp"]) {
+    const file = path.join("public", `${image.src}.${extension}`);
+    assert(existsSync(file), `Missing about image: ${file}`);
+  }
+}
+
+for (const locale of locales) {
+  const about = aboutCopy[locale];
+  nonEmpty(about.meta.title, `aboutCopy.${locale}.meta.title`);
+  nonEmpty(about.meta.description, `aboutCopy.${locale}.meta.description`);
+  nonEmpty(about.hero.title, `aboutCopy.${locale}.hero.title`);
+  assert(about.story.body.length >= 2, `aboutCopy.${locale}.story needs 2+ paragraphs`);
+  assert(about.values.items.length === 4, `aboutCopy.${locale}.values must have 4 items`);
+  assert(about.why.items.length === 4, `aboutCopy.${locale}.why must have 4 items`);
+
+  const funeral = funeralCopy[locale];
+  nonEmpty(funeral.meta.title, `funeralCopy.${locale}.meta.title`);
+  nonEmpty(funeral.hero.title, `funeralCopy.${locale}.hero.title`);
+  assert(funeral.services.items.length === 5, `funeralCopy.${locale}.services must have 5 items`);
+  assert(funeral.process.steps.length === 5, `funeralCopy.${locale}.process must have 5 steps`);
+  assert(funeral.faq.items.length >= 3, `funeralCopy.${locale}.faq needs 3+ items`);
+  assert(funeral.checklist.items.length >= 3, `funeralCopy.${locale}.checklist needs 3+ items`);
+
+  const preplanning = prePlanningCopy[locale];
+  nonEmpty(preplanning.meta.title, `prePlanningCopy.${locale}.meta.title`);
+  nonEmpty(preplanning.hero.title, `prePlanningCopy.${locale}.hero.title`);
+  assert(preplanning.benefits.items.length === 4, `prePlanningCopy.${locale}.benefits must have 4 items`);
+  assert(preplanning.steps.items.length === 4, `prePlanningCopy.${locale}.steps must have 4 items`);
+  assert(preplanning.faq.items.length >= 3, `prePlanningCopy.${locale}.faq needs 3+ items`);
+
+  const contact = contactCopy[locale];
+  nonEmpty(contact.meta.title, `contactCopy.${locale}.meta.title`);
+  nonEmpty(contact.hero.title, `contactCopy.${locale}.hero.title`);
+  nonEmpty(contact.form.title, `contactCopy.${locale}.form.title`);
+  nonEmpty(contact.form.intro, `contactCopy.${locale}.form.intro`);
+  assert(contact.directions.points.length >= 3, `contactCopy.${locale}.directions needs 3+ points`);
+
+  const tablets = tabletsCopy[locale];
+  nonEmpty(tablets.meta.title, `tabletsCopy.${locale}.meta.title`);
+  nonEmpty(tablets.header.title, `tabletsCopy.${locale}.header.title`);
+  assert(tablets.expect.items.length === 3, `tabletsCopy.${locale}.expect must have 3 items`);
+  nonEmpty(tablets.form.submit, `tabletsCopy.${locale}.form.submit`);
+  nonEmpty(tablets.form.successTitle, `tabletsCopy.${locale}.form.successTitle`);
+  nonEmpty(tablets.form.message, `tabletsCopy.${locale}.form.message`);
+
+  for (const key of ["privacy", "terms"] as const) {
+    const doc = legalCopy[locale][key];
+    nonEmpty(doc.meta.title, `legalCopy.${locale}.${key}.meta.title`);
+    nonEmpty(doc.title, `legalCopy.${locale}.${key}.title`);
+    nonEmpty(doc.intro, `legalCopy.${locale}.${key}.intro`);
+    nonEmpty(doc.lastUpdated, `legalCopy.${locale}.${key}.lastUpdated`);
+    assert(doc.sections.length >= 5, `legalCopy.${locale}.${key} needs 5+ sections`);
+  }
+}
+
 for (const price of pricing) {
   for (const locale of locales) {
     nonEmpty(price.label[locale], `${price.id}.label.${locale}`);
@@ -154,6 +217,8 @@ for (const locale of locales) {
   nonEmpty(site.whatsapp.booking, `siteCopy.${locale}.whatsapp.booking`);
   nonEmpty(site.whatsapp.general, `siteCopy.${locale}.whatsapp.general`);
   nonEmpty(site.whatsapp.funeral, `siteCopy.${locale}.whatsapp.funeral`);
+  nonEmpty(site.footer.privacy, `siteCopy.${locale}.footer.privacy`);
+  nonEmpty(site.footer.terms, `siteCopy.${locale}.footer.terms`);
 
   const form = formCopy[locale];
   nonEmpty(form.eyebrow, `formCopy.${locale}.eyebrow`);

@@ -72,9 +72,27 @@ function Field({
   );
 }
 
-export function LeadForm({ locale }: { locale: Locale }) {
+type LeadFormProps = {
+  locale: Locale;
+  mode?: "visit" | "notify";
+  successOverride?: { title: string; body: string };
+  submitLabel?: string;
+  notifyMessage?: string;
+  showUrgent?: boolean;
+};
+
+export function LeadForm({
+  locale,
+  mode = "visit",
+  successOverride,
+  submitLabel,
+  notifyMessage,
+  showUrgent = true,
+}: LeadFormProps) {
   const copy = formCopy[locale];
   const ui = siteCopy[locale];
+  const isNotify = mode === "notify";
+  const successCopy = successOverride ?? copy.success;
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>("idle");
@@ -124,15 +142,17 @@ export function LeadForm({ locale }: { locale: Locale }) {
 
     const form = new FormData(event.currentTarget);
     const payload = {
-      type: "visit" as const,
+      type: isNotify ? ("notify" as const) : ("visit" as const),
       locale,
       name: String(form.get("name") ?? ""),
       phone: String(form.get("phone") ?? ""),
       email: String(form.get("email") ?? ""),
-      interest: String(form.get("interest") ?? ""),
-      preferredDate: String(form.get("preferredDate") ?? ""),
-      preferredTime: String(form.get("preferredTime") ?? ""),
-      message: String(form.get("message") ?? ""),
+      interest: isNotify ? "other" : String(form.get("interest") ?? ""),
+      preferredDate: isNotify ? "" : String(form.get("preferredDate") ?? ""),
+      preferredTime: isNotify ? "" : String(form.get("preferredTime") ?? ""),
+      message: isNotify
+        ? (notifyMessage ?? "")
+        : String(form.get("message") ?? ""),
       consent: form.get("consent") === "on",
       website: String(form.get("website") ?? ""),
       turnstileToken: token,
@@ -222,13 +242,16 @@ export function LeadForm({ locale }: { locale: Locale }) {
           <CheckIcon className="h-5 w-5" />
         </span>
         <h3 className="mt-5 font-display text-2xl text-ink">
-          {copy.success.title}
+          {successCopy.title}
         </h3>
         <p className="mt-3 text-sm leading-7 text-ink/75">
-          {copy.success.body}
+          {successCopy.body}
         </p>
         <a
-          href={waLink(ui.whatsapp.booking, contact.whatsappBooking)}
+          href={waLink(
+            isNotify ? ui.whatsapp.general : ui.whatsapp.booking,
+            isNotify ? contact.whatsappGeneral : contact.whatsappBooking,
+          )}
           target="_blank"
           rel="noreferrer"
           className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-full border border-jade px-5 text-sm font-semibold text-jade transition hover:bg-jade hover:text-ivory"
@@ -316,7 +339,7 @@ export function LeadForm({ locale }: { locale: Locale }) {
         </Field>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className={isNotify ? "grid gap-4" : "grid gap-4 sm:grid-cols-2"}>
         <Field
           id="email"
           label={copy.fields.email}
@@ -337,72 +360,78 @@ export function LeadForm({ locale }: { locale: Locale }) {
           />
         </Field>
 
-        <Field id="interest" label={copy.fields.interest}>
-          <select
-            id="interest"
-            name="interest"
-            className={inputClass(false)}
-            defaultValue=""
-          >
-            <option value="">{copy.fields.optional}</option>
-            {copy.interests.map((interest) => (
-              <option key={interest.value} value={interest.value}>
-                {interest.label}
-              </option>
-            ))}
-          </select>
-        </Field>
+        {!isNotify ? (
+          <Field id="interest" label={copy.fields.interest}>
+            <select
+              id="interest"
+              name="interest"
+              className={inputClass(false)}
+              defaultValue=""
+            >
+              <option value="">{copy.fields.optional}</option>
+              {copy.interests.map((interest) => (
+                <option key={interest.value} value={interest.value}>
+                  {interest.label}
+                </option>
+              ))}
+            </select>
+          </Field>
+        ) : null}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Field
-          id="preferredDate"
-          label={copy.fields.date}
-          optionalLabel={copy.fields.optional}
-          error={fieldErrorsState.preferredDate}
-        >
-          <input
-            id="preferredDate"
-            name="preferredDate"
-            type="date"
-            aria-invalid={Boolean(fieldErrorsState.preferredDate)}
-            aria-describedby={
-              fieldErrorsState.preferredDate
-                ? "preferredDate-error"
-                : undefined
-            }
-            className={inputClass(Boolean(fieldErrorsState.preferredDate))}
-          />
-        </Field>
+      {!isNotify ? (
+        <>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Field
+              id="preferredDate"
+              label={copy.fields.date}
+              optionalLabel={copy.fields.optional}
+              error={fieldErrorsState.preferredDate}
+            >
+              <input
+                id="preferredDate"
+                name="preferredDate"
+                type="date"
+                aria-invalid={Boolean(fieldErrorsState.preferredDate)}
+                aria-describedby={
+                  fieldErrorsState.preferredDate
+                    ? "preferredDate-error"
+                    : undefined
+                }
+                className={inputClass(Boolean(fieldErrorsState.preferredDate))}
+              />
+            </Field>
 
-        <Field id="preferredTime" label={copy.fields.time}>
-          <select
-            id="preferredTime"
-            name="preferredTime"
-            className={inputClass(false)}
-            defaultValue="any"
+            <Field id="preferredTime" label={copy.fields.time}>
+              <select
+                id="preferredTime"
+                name="preferredTime"
+                className={inputClass(false)}
+                defaultValue="any"
+              >
+                {copy.times.map((time) => (
+                  <option key={time.value} value={time.value}>
+                    {time.label}
+                  </option>
+                ))}
+              </select>
+            </Field>
+          </div>
+
+          <Field
+            id="message"
+            label={copy.fields.message}
+            optionalLabel={copy.fields.optional}
           >
-            {copy.times.map((time) => (
-              <option key={time.value} value={time.value}>
-                {time.label}
-              </option>
-            ))}
-          </select>
-        </Field>
-      </div>
-
-      <Field
-        id="message"
-        label={copy.fields.message}
-        optionalLabel={copy.fields.optional}
-      >
-        <textarea
-          id="message"
-          name="message"
-          rows={4}
-          className={inputClass(false)}
-        />
-      </Field>
+            <textarea
+              id="message"
+              name="message"
+              rows={4}
+              className={inputClass(false)}
+            />
+          </Field>
+        </>
+      ) : null}
 
       <div>
         <label className="flex items-start gap-3 text-sm leading-6 text-ink/80">
@@ -448,20 +477,24 @@ export function LeadForm({ locale }: { locale: Locale }) {
         disabled={status === "submitting"}
         className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-gold px-6 text-sm font-semibold text-ink transition hover:bg-gold-light disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
-        {status === "submitting" ? copy.submitting : copy.submit}
+        {status === "submitting"
+          ? copy.submitting
+          : (submitLabel ?? copy.submit)}
       </button>
 
       <p className="text-xs leading-6 text-stone">{copy.privacy}</p>
-      <p className="text-xs leading-6 text-stone">
-        {copy.urgent}{" "}
-        <a
-          href={telHref(contact.phone24h)}
-          className="inline-flex items-center gap-1 font-semibold text-jade"
-        >
-          <PhoneIcon className="h-3.5 w-3.5" />
-          {contact.phone24hDisplay}
-        </a>
-      </p>
+      {showUrgent ? (
+        <p className="text-xs leading-6 text-stone">
+          {copy.urgent}{" "}
+          <a
+            href={telHref(contact.phone24h)}
+            className="inline-flex items-center gap-1 font-semibold text-jade"
+          >
+            <PhoneIcon className="h-3.5 w-3.5" />
+            {contact.phone24hDisplay}
+          </a>
+        </p>
+      ) : null}
     </form>
   );
 }

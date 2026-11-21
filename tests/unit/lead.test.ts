@@ -188,6 +188,26 @@ describe("POST /api/lead", () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
+  it("sends a notify-me lead", async () => {
+    const fetchMock = installFetch();
+    const response = await onRequestPost({
+      request: makeRequest({
+        ...basePayload,
+        type: "notify",
+        interest: "other",
+        preferredDate: "",
+        preferredTime: "",
+        message: "Notify me about ancestral tablets.",
+      }),
+      env,
+    });
+
+    expect(response.status).toBe(200);
+    const email = resendBody(fetchMock);
+    expect(email.subject).toContain("Notify me");
+    expect(email.text).toContain("ancestral tablets");
+  });
+
   it("does not call Resend in noop transport mode", async () => {
     const fetchMock = installFetch();
     const response = await onRequestPost({

@@ -16,9 +16,12 @@ type BuildMetadataInput = {
 
 export function localePaths(path: string) {
   const clean = path === "/" ? "" : path.replace(/\/$/, "");
+  const zhPath = clean ? `${clean}/` : "/";
+  const enPath = clean ? `/en${clean}/` : "/en/";
+
   return {
-    zh: `${SITE_URL}${clean || "/"}`,
-    en: `${SITE_URL}/en${clean}`,
+    zh: `${SITE_URL}${zhPath}`,
+    en: `${SITE_URL}${enPath}`,
   };
 }
 

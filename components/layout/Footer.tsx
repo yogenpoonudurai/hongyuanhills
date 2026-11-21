@@ -151,7 +151,27 @@ export function Footer({ locale }: { locale: Locale }) {
           <p>
             © {year} {copy.brand.name} · {copy.brand.latin}. {copy.footer.rights}.
           </p>
-          <p>{copy.footer.legalNote}</p>
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href={localizedHref(locale, "/privacy-policy")}
+              className="transition hover:text-gold-light"
+            >
+              {copy.footer.privacy}
+            </a>
+            <span aria-hidden="true" className="text-ivory/30">
+              ·
+            </span>
+            <a
+              href={localizedHref(locale, "/terms")}
+              className="transition hover:text-gold-light"
+            >
+              {copy.footer.terms}
+            </a>
+            <span aria-hidden="true" className="text-ivory/30">
+              ·
+            </span>
+            <span>{copy.footer.legalNote}</span>
+          </div>
         </div>
       </div>
     </footer>

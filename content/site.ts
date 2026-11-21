@@ -7,15 +7,15 @@ export interface NavItem {
 }
 
 export const nav: NavItem[] = [
-  { id: "about", href: "/#about", label: { zh: "关于我们", en: "About Us" } },
+  { id: "about", href: "/about", label: { zh: "关于我们", en: "About Us" } },
   { id: "services", href: "/#services", label: { zh: "服务项目", en: "Our Services" } },
   { id: "halls", href: "/services/columbarium", label: { zh: "骨灰殿", en: "Columbarium" } },
   {
     id: "pre-planning",
-    href: "/#pre-planning",
+    href: "/pre-planning",
     label: { zh: "生前规划", en: "Pre-Planning" },
   },
-  { id: "contact", href: "/#contact", label: { zh: "联系我们", en: "Contact Us" } },
+  { id: "contact", href: "/contact", label: { zh: "联系我们", en: "Contact Us" } },
 ];
 
 export const servicesMenu: NavItem[] = [
@@ -31,12 +31,12 @@ export const servicesMenu: NavItem[] = [
   },
   {
     id: "funeral",
-    href: "/#book",
+    href: "/services/funeral-services",
     label: { zh: "殡仪服务配套", en: "Funeral Services" },
   },
   {
     id: "tablets",
-    href: "/#book",
+    href: "/services/ancestral-tablets",
     label: { zh: "神主牌 · 即将推出", en: "Ancestral Tablets · Coming Soon" },
   },
 ];
@@ -79,6 +79,8 @@ type SiteCopy = {
     visit: string;
     rights: string;
     legalNote: string;
+    privacy: string;
+    terms: string;
   };
   whatsapp: { booking: string; general: string; funeral: string };
 };
@@ -134,7 +136,9 @@ export const siteCopy: Record<Locale, SiteCopy> = {
       contact: "联系我们",
       visit: "到访",
       rights: "版权所有",
-      legalNote: "隐私政策与条款可应要求提供。",
+      legalNote: "隐私政策与使用条款。",
+      privacy: "隐私政策",
+      terms: "使用条款",
     },
     whatsapp: {
       booking: "您好，我想预约参观宏缘宝地。",
@@ -192,7 +196,9 @@ export const siteCopy: Record<Locale, SiteCopy> = {
       contact: "Contact",
       visit: "Visit",
       rights: "All rights reserved",
-      legalNote: "Privacy policy and terms are available on request.",
+      legalNote: "Privacy policy and terms of use.",
+      privacy: "Privacy Policy",
+      terms: "Terms of Use",
     },
     whatsapp: {
       booking: "Hello, I would like to book a visit to Hong Yuan Hills.",

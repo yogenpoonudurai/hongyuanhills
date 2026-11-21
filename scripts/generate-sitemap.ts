@@ -8,8 +8,15 @@ type Route = { path: string; priority: string };
 // Extend this list as interior pages ship.
 const routes: Route[] = [
   { path: "/", priority: "1.0" },
+  { path: "/about", priority: "0.8" },
   { path: "/services/feng-shui-grounds", priority: "0.9" },
   { path: "/services/columbarium", priority: "0.9" },
+  { path: "/services/funeral-services", priority: "0.8" },
+  { path: "/services/ancestral-tablets", priority: "0.7" },
+  { path: "/pre-planning", priority: "0.9" },
+  { path: "/contact", priority: "0.8" },
+  { path: "/privacy-policy", priority: "0.3" },
+  { path: "/terms", priority: "0.3" },
   ...halls.map((hall) => ({
     path: `/services/columbarium/${hall.slug}`,
     priority: "0.8",
@@ -21,8 +28,8 @@ const today = new Date().toISOString().slice(0, 10);
 const urls = routes
   .flatMap(({ path: routePath, priority }) => {
     const clean = routePath === "/" ? "" : routePath.replace(/\/$/, "");
-    const zh = `${SITE_URL}${clean || "/"}`;
-    const en = `${SITE_URL}/en${clean}`;
+    const zh = `${SITE_URL}${clean ? `${clean}/` : "/"}`;
+    const en = `${SITE_URL}${clean ? `/en${clean}/` : "/en/"}`;
 
     return [zh, en].map(
       (loc) => `  <url>

@@ -7,124 +7,250 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/en</loc>
+    <loc>https://hongyuanhills.com/en/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/services/feng-shui-grounds</loc>
+    <loc>https://hongyuanhills.com/about/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/about/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/en/about/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/about/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/about/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/services/feng-shui-grounds/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/feng-shui-grounds" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/feng-shui-grounds" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/feng-shui-grounds" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/feng-shui-grounds/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/feng-shui-grounds/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/feng-shui-grounds/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/en/services/feng-shui-grounds</loc>
+    <loc>https://hongyuanhills.com/en/services/feng-shui-grounds/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/feng-shui-grounds" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/feng-shui-grounds" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/feng-shui-grounds" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/feng-shui-grounds/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/feng-shui-grounds/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/feng-shui-grounds/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/services/columbarium</loc>
+    <loc>https://hongyuanhills.com/services/columbarium/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/en/services/columbarium</loc>
+    <loc>https://hongyuanhills.com/en/services/columbarium/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/services/columbarium/zizai-pavilion</loc>
+    <loc>https://hongyuanhills.com/services/funeral-services/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/zizai-pavilion" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/zizai-pavilion" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/zizai-pavilion" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/funeral-services/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/funeral-services/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/funeral-services/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/en/services/columbarium/zizai-pavilion</loc>
+    <loc>https://hongyuanhills.com/en/services/funeral-services/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/zizai-pavilion" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/zizai-pavilion" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/zizai-pavilion" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/funeral-services/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/funeral-services/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/funeral-services/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/services/columbarium/benyuan-pavilion</loc>
+    <loc>https://hongyuanhills.com/services/ancestral-tablets/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/ancestral-tablets/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/ancestral-tablets/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/ancestral-tablets/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/en/services/ancestral-tablets/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/ancestral-tablets/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/ancestral-tablets/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/ancestral-tablets/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/pre-planning/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/pre-planning/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/pre-planning/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/pre-planning/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/en/pre-planning/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/pre-planning/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/pre-planning/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/pre-planning/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/contact/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/benyuan-pavilion" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/benyuan-pavilion" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/benyuan-pavilion" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/contact/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/en/services/columbarium/benyuan-pavilion</loc>
+    <loc>https://hongyuanhills.com/en/contact/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/benyuan-pavilion" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/benyuan-pavilion" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/benyuan-pavilion" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/contact/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/contact/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/contact/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/services/columbarium/sanyuan-hall</loc>
+    <loc>https://hongyuanhills.com/privacy-policy/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/privacy-policy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/privacy-policy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/privacy-policy/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/en/privacy-policy/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/privacy-policy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/privacy-policy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/privacy-policy/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/terms/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/terms/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/terms/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/terms/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/en/terms/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/terms/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/terms/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/terms/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/services/columbarium/zizai-pavilion/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/sanyuan-hall" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/sanyuan-hall" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/sanyuan-hall" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/zizai-pavilion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/zizai-pavilion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/zizai-pavilion/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/en/services/columbarium/sanyuan-hall</loc>
+    <loc>https://hongyuanhills.com/en/services/columbarium/zizai-pavilion/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/sanyuan-hall" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/sanyuan-hall" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/sanyuan-hall" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/zizai-pavilion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/zizai-pavilion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/zizai-pavilion/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/services/columbarium/danxiang-pavilion</loc>
+    <loc>https://hongyuanhills.com/services/columbarium/benyuan-pavilion/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/danxiang-pavilion" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/danxiang-pavilion" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/danxiang-pavilion" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/benyuan-pavilion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/benyuan-pavilion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/benyuan-pavilion/" />
   </url>
   <url>
-    <loc>https://hongyuanhills.com/en/services/columbarium/danxiang-pavilion</loc>
+    <loc>https://hongyuanhills.com/en/services/columbarium/benyuan-pavilion/</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/danxiang-pavilion" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/danxiang-pavilion" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/danxiang-pavilion" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/benyuan-pavilion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/benyuan-pavilion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/benyuan-pavilion/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/services/columbarium/sanyuan-hall/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/sanyuan-hall/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/sanyuan-hall/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/sanyuan-hall/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/en/services/columbarium/sanyuan-hall/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/sanyuan-hall/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/sanyuan-hall/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/sanyuan-hall/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/services/columbarium/danxiang-pavilion/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/danxiang-pavilion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/danxiang-pavilion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/danxiang-pavilion/" />
+  </url>
+  <url>
+    <loc>https://hongyuanhills.com/en/services/columbarium/danxiang-pavilion/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongyuanhills.com/services/columbarium/danxiang-pavilion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://hongyuanhills.com/en/services/columbarium/danxiang-pavilion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hongyuanhills.com/services/columbarium/danxiang-pavilion/" />
   </url>
 </urlset>

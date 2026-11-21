@@ -209,7 +209,12 @@ export function HomePage({ locale }: { locale: Locale }) {
                 </li>
               ))}
             </ul>
-            <ButtonLink href="#book" variant="secondary" className="mt-8" showArrow>
+            <ButtonLink
+              href={localizedHref(locale, "/about")}
+              variant="secondary"
+              className="mt-8"
+              showArrow
+            >
               {copy.about.cta}
             </ButtonLink>
           </div>
@@ -236,7 +241,12 @@ export function HomePage({ locale }: { locale: Locale }) {
                 </li>
               ))}
             </ul>
-            <ButtonLink href="#book" variant="ghost" className="mt-8" showArrow>
+            <ButtonLink
+              href={localizedHref(locale, "/services/feng-shui-grounds")}
+              variant="ghost"
+              className="mt-8"
+              showArrow
+            >
               {copy.grounds.cta}
             </ButtonLink>
           </div>
@@ -276,7 +286,7 @@ export function HomePage({ locale }: { locale: Locale }) {
                 <h3 className="mt-5 font-display text-xl text-ink">{item.title}</h3>
                 <p className="mt-3 flex-1 text-[15px] leading-7 text-ink/70">{item.body}</p>
                 <a
-                  href={item.href}
+                  href={localizedHref(locale, item.href)}
                   className="mt-5 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.08em] text-jade transition group-hover:text-gold"
                 >
                   {item.cta}
@@ -360,7 +370,12 @@ export function HomePage({ locale }: { locale: Locale }) {
             <p className="eyebrow">{copy.preplanning.eyebrow}</p>
             <h2 className="section-title">{copy.preplanning.title}</h2>
             <p className="section-copy">{copy.preplanning.intro}</p>
-            <ButtonLink href="#book" variant="primary" className="mt-8" showArrow>
+            <ButtonLink
+              href={localizedHref(locale, "/pre-planning")}
+              variant="primary"
+              className="mt-8"
+              showArrow
+            >
               {copy.preplanning.cta}
             </ButtonLink>
             <p className="mt-4 max-w-md text-xs leading-6 text-stone">
