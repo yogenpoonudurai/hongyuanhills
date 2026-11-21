@@ -1,5 +1,32 @@
 @import "tailwindcss";
 
+
+/* Sanctuary theme: cooler, mistier, deeper green and champagne. */
+html[data-theme="sanctuary"] {
+  --color-ink: #10251d;
+  --color-jade: #1e4a3a;
+  --color-jade-deep: #0c261d;
+  --color-gold: #b48c4e;
+  --color-gold-light: #dcc9a4;
+  --color-gold-dark: #7e5b2c;
+  --color-ivory: #f4f1e8;
+  --color-paper: #edf1e9;
+  --color-stone: #5b675f;
+  --color-line: #cbd5c7;
+}
+
+html[data-theme="sanctuary"] body {
+  background-image: radial-gradient(
+    ellipse at 50% 0%,
+    rgb(255 255 255 / 0.5),
+    transparent 58%
+  );
+}
+
+html[data-theme="sanctuary"] picture img {
+  filter: saturate(0.94) contrast(1.02);
+}
+
 @theme {
   --color-ink: #1c2a25;
   --color-jade: #1f4a3a;
@@ -12,11 +39,11 @@
   --color-gold-dark: #8c6a3b;
   --color-line: #ded6c6;
 
-  --font-display: var(--font-cormorant), "Cormorant Garamond",
-    "LXGW WenKai", "Kaiti SC", "STKaiti", "KaiTi", "Noto Serif SC", serif;
-  --font-body: var(--font-source-sans), "Source Sans 3", "Inter",
-    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
-    sans-serif;
+  --font-display: var(--font-cormorant), var(--font-cn), "LXGW WenKai",
+    "Kaiti SC", "STKaiti", "KaiTi", "Noto Serif SC", serif;
+  --font-body: var(--font-source-sans), var(--font-cn), "LXGW WenKai",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans CJK SC", sans-serif;
 }
 
 @layer base {
@@ -31,6 +58,9 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    transition:
+      background-color 300ms ease,
+      color 300ms ease;
   }
 
   [lang="zh-Hans"] body {

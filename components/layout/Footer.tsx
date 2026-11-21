@@ -10,6 +10,7 @@ import {
 import { contact, mapsUrl, telHref, waLink } from "@/lib/contact";
 import { homeHref, localizedHref } from "@/lib/i18n";
 import { LanguageSwitchLink } from "@/components/layout/LanguageSwitchLink";
+import { ThemeSwitch } from "@/components/layout/ThemeSwitch";
 
 export function Footer({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
@@ -172,6 +173,7 @@ export function Footer({ locale }: { locale: Locale }) {
             </span>
             <span>{copy.footer.legalNote}</span>
           </div>
+          <ThemeSwitch locale={locale} />
         </div>
       </div>
     </footer>

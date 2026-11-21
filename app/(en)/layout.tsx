@@ -27,8 +27,18 @@ export default function EnglishRootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={fontClassNames}>
+    <html
+      lang="en"
+      className={fontClassNames}
+      suppressHydrationWarning
+    >
       <body className="min-h-dvh bg-paper text-ink antialiased">
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var t=localStorage.getItem('theme');if(t==='sanctuary'){document.documentElement.dataset.theme='sanctuary'}}catch(e){}",
+          }}
+        />
         <SiteShell locale="en">{children}</SiteShell>
       </body>
     </html>

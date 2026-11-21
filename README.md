@@ -78,6 +78,16 @@ npm run test:e2e   # Playwright: requires a built out/ directory
 
 Playwright covers both locales, mobile overflow, the mobile drawer, image loading, contact CTAs and axe accessibility checks.
 
+
+## Theme and fonts
+
+- **Ivory** is the default theme; **Sanctuary** is a cooler, mistier premium variant. Toggle it in the footer; the choice persists in `localStorage`.
+- The Sanctuary palette lives in `app/globals.css` under `html[data-theme="sanctuary"]`.
+- Chinese uses a self-hosted, subset **LXGW WenKai** (Kaiti-style, SIL OFL 1.1). The file is `assets/fonts/LXGWWenKai-Regular.woff2`; the licence is `public/fonts/OFL-LXGWWenKai.txt`.
+- The subset currently covers every CJK character in the source. If new Chinese copy introduces new characters, re-subset the font before release; otherwise those glyphs fall back to the system Kaiti stack.
+- English display/body fonts are self-hosted Cormorant Garamond and Source Sans 3 via `next/font/google`.
+- If the client supplies a specific licensed font, replace `cnFont` in `lib/fonts.ts` and keep the same `--font-cn` variable.
+
 ## Environment
 
 Copy `.env.example` to `.env.local` and fill in what the client supplies:
