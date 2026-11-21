@@ -81,12 +81,27 @@ Playwright covers both locales, mobile overflow, the mobile drawer, image loadin
 
 ## Theme and fonts
 
-- **Ivory** is the default theme; **Sanctuary** is a cooler, mistier premium variant. Toggle it in the footer; the choice persists in `localStorage`.
-- The Sanctuary palette lives in `app/globals.css` under `html[data-theme="sanctuary"]`.
+**Default theme: Imperial Stone & Bronze**, derived from `references/Hong Yuan Hills Design Kit (1).png` and `references/Hong Yuan Hills Design System Moodboard.png`. The footer switches to **Ivory** for a lighter, cooler alternative.
+
+| Token | Value | Use |
+|---|---|---|
+| Porcelain ivory | `#F5EFE6` / `#F8F0E8` | Page and light section surfaces |
+| Antique bronze | `#A88050` / `#D0C0A8` | Accents, rules, primary buttons |
+| Dark stone | `#201D15` / `#1C1A14` | Text and dark sanctuary bands |
+| Heritage red | `#702828` | Restrained seal marks and tiny accents only |
+| Muted stone | `#6B6458` | Secondary text |
+| Bronze line | `#D8CBB8` | Borders and dividers |
+
 - Chinese uses a self-hosted, subset **LXGW WenKai** (Kaiti-style, SIL OFL 1.1). The file is `assets/fonts/LXGWWenKai-Regular.woff2`; the licence is `public/fonts/OFL-LXGWWenKai.txt`.
 - The subset currently covers every CJK character in the source. If new Chinese copy introduces new characters, re-subset the font before release; otherwise those glyphs fall back to the system Kaiti stack.
 - English display/body fonts are self-hosted Cormorant Garamond and Source Sans 3 via `next/font/google`.
 - If the client supplies a specific licensed font, replace `cnFont` in `lib/fonts.ts` and keep the same `--font-cn` variable.
+
+### Photography and design-reference rule
+
+- The design kit/moodboard are **art direction references only**. Concept images from those boards must not be shipped as production photography.
+- Production imagery is taken from verified Hong Yuan Hills photography and facilities in `references/HONG YUAN HILLS/`.
+- The footer seal mark is a decorative heritage motif, not an official logo; replace it with client branding when supplied.
 
 
 ## Social links

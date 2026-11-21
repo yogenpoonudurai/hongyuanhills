@@ -36,7 +36,7 @@ export default function ChineseRootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{var t=localStorage.getItem('theme');if(t==='sanctuary'){document.documentElement.dataset.theme='sanctuary'}}catch(e){}",
+              "try{var t=localStorage.getItem('theme');if(t==='ivory'){document.documentElement.dataset.theme='ivory'}}catch(e){}",
           }}
         />
         <SiteShell locale="zh">{children}</SiteShell>

@@ -2,50 +2,51 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 test.describe("theme and font", () => {
-  test("switches to Sanctuary, persists and switches back", async ({ page }) => {
+  test("switches to Ivory, persists and switches back to Imperial", async ({
+    page,
+  }) => {
     await page.goto("/");
 
     const group = page.getByRole("group", { name: "主题" });
-    await expect(group.getByRole("button", { name: "经典" })).toHaveAttribute(
+    await expect(group.getByRole("button", { name: "御石" })).toHaveAttribute(
       "aria-pressed",
       "true",
-    );
-
-    await group.getByRole("button", { name: "静谧" }).click();
-    await expect(page.locator("html")).toHaveAttribute(
-      "data-theme",
-      "sanctuary",
     );
     await expect
       .poll(() =>
         page.evaluate(() => getComputedStyle(document.body).backgroundColor),
       )
-      .toBe("rgb(237, 241, 233)");
+      .toBe("rgb(245, 239, 230)");
+
+    await group.getByRole("button", { name: "象牙" }).click();
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "ivory");
+    await expect
+      .poll(() =>
+        page.evaluate(() => getComputedStyle(document.body).backgroundColor),
+      )
+      .toBe("rgb(251, 248, 241)");
 
     await page.reload({ waitUntil: "networkidle" });
-    await expect(page.locator("html")).toHaveAttribute(
-      "data-theme",
-      "sanctuary",
-    );
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "ivory");
 
     await page
       .getByRole("group", { name: "主题" })
-      .getByRole("button", { name: "经典" })
+      .getByRole("button", { name: "御石" })
       .click();
     await expect(page.locator("html")).not.toHaveAttribute(
       "data-theme",
-      "sanctuary",
+      "ivory",
     );
   });
 
   test("both themes pass serious axe checks", async ({ page }) => {
     await page.goto("/");
 
-    for (const theme of ["ivory", "sanctuary"] as const) {
-      if (theme === "sanctuary") {
+    for (const theme of ["imperial", "ivory"] as const) {
+      if (theme === "ivory") {
         await page
           .getByRole("group", { name: "主题" })
-          .getByRole("button", { name: "静谧" })
+          .getByRole("button", { name: "象牙" })
           .click();
         await page.waitForTimeout(350);
       }

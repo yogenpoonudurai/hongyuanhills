@@ -11,6 +11,7 @@ import { contact, mapsUrl, telHref, waLink } from "@/lib/contact";
 import { homeHref, localizedHref } from "@/lib/i18n";
 import { LanguageSwitchLink } from "@/components/layout/LanguageSwitchLink";
 import { ThemeSwitch } from "@/components/layout/ThemeSwitch";
+import { SealMark } from "@/components/ui/SealMark";
 import { FacebookIcon, InstagramIcon } from "@/components/ui/Icons";
 import { socialProfiles } from "@/content/social";
 
@@ -23,17 +24,21 @@ export function Footer({ locale }: { locale: Locale }) {
     <footer className="bg-jade-deep text-ivory">
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 md:py-20 lg:grid-cols-4">
         <div>
-          <a href={home} className="inline-flex flex-col leading-none">
-            <span className="font-display text-2xl tracking-[0.14em]">
-              {copy.brand.name}
-            </span>
-            <span className="mt-1 text-[9px] font-semibold tracking-[0.38em] text-gold-light">
-              {copy.brand.latin}
+          <a href={home} className="inline-flex items-center gap-3 leading-none">
+            <SealMark />
+            <span className="flex flex-col">
+              <span className="font-display text-2xl tracking-[0.14em]">
+                {copy.brand.name}
+              </span>
+              <span className="mt-1 text-[9px] font-semibold tracking-[0.38em] text-gold-light">
+                {copy.brand.latin}
+              </span>
             </span>
           </a>
           <p className="mt-5 max-w-xs text-sm leading-7 text-ivory/70">
             {copy.tagline}
           </p>
+          <span aria-hidden="true" className="mt-4 block h-px w-12 bg-seal/70" />
           <LanguageSwitchLink
             locale={locale}
             label={copy.otherLangLabel}
