@@ -48,7 +48,7 @@ Build a **bilingual, statically exported Next.js site** deployed to **Cloudflare
 |---|---|
 | Free hosting | Cloudflare Pages free: unlimited static requests/bandwidth, 500 builds/month |
 | Chinese + English | Pre-rendered `/` (Chinese) and `/en` (English) with correct `lang` and hreflang |
-| Low change volume | Git-based content + deploy; covered by the 6-month retainer |
+| Low change volume | Git-based content + deploy; covered by the 3-month retainer |
 | No WordPress security risk | No PHP, no plugins, no database, no admin login |
 | No CMS | Typed content files, build-time validation, preview URLs |
 | Forms | One Pages Function: Turnstile + Zod + Resend |
@@ -65,7 +65,7 @@ Build a **bilingual, statically exported Next.js site** deployed to **Cloudflare
 | VPS (“small server”) | Costs money, needs patching/backups/SSL; unnecessary for a static marketing site |
 | Vercel Hobby | Free plan is restricted to non-commercial use; this is a client business site |
 | Full Next.js SSR on Workers | Free Workers CPU is 10 ms/request; SSR/server actions are unnecessary and riskier |
-| CMS (Sanity/Payload) for v1 | Low change volume and 6-month retainer make it unnecessary complexity |
+| CMS (Sanity/Payload) for v1 | Low change volume and 3-month retainer make it unnecessary complexity |
 
 ---
 
@@ -1469,7 +1469,7 @@ Keep the Framer site live until the new deployment is tested on `*.pages.dev`; t
 - 24h: DNS/SSL/email/forms, errors, uptime.
 - 7d: indexing, Core Web Vitals, form delivery, 404s.
 - 30d: review analytics, adjust content/CTAs.
-- 6-month support: content updates, price changes, image swaps, minor fixes; defined SLA.
+- 3-month support: content updates, price changes, image swaps, minor fixes; defined SLA.
 
 ---
 
@@ -1501,7 +1501,7 @@ Keep the Framer site live until the new deployment is tested on `*.pages.dev`; t
 - Copy/price/image updates: 2 business days.
 - New section/page: 5 business days (scope quoted).
 - Emergency contact change: same day where feasible.
-- Included in the 6-month retainer; define monthly hours in the contract.
+- Included in the 3-month retainer; define monthly hours in the contract.
 
 ### 21.4 Future CMS path (not v1)
 
@@ -1514,7 +1514,7 @@ If the client later wants self-editing, use **Keystatic** (Git-based, no databas
 - `CONTENT.md` editing guide.
 - `RUNBOOK.md` DNS/rollback/forms.
 - 1-hour walkthrough.
-- After 6 months: hourly/retainer or CMS migration.
+- After 3 months: hourly/retainer or CMS migration.
 
 ---
 
@@ -1530,7 +1530,7 @@ If the client later wants self-editing, use **Keystatic** (Git-based, no databas
 | 5. Content + SEO | 1 week | All copy, images, metadata, schema, sitemap, analytics | Client content review; validation passes |
 | 6. QA | 1 week | E2E, a11y, performance, mobile, form delivery, security headers | Budgets met; no serious a11y issues |
 | 7. Launch | 3–5 days | DNS cutover, smoke tests, monitoring, handover | Live, stable, rollback ready |
-| 8. Support | 6 months | Content updates, fixes, monitoring | SLA met |
+| 8. Support | 3 months | Content updates, fixes, monitoring | SLA met |
 
 **Critical path:** price figures, DNS/email access, video IDs, bilingual content sign-off. Build can start before these, using “Price on request” and placeholders, but launch cannot.
 
@@ -1571,7 +1571,7 @@ A phase is done only when:
 | Turnstile blocks some users | LOW | WhatsApp/call fallback; test accessibility |
 | Content/asset rights | MED | Client confirms photo/video rights; no stock without license |
 | PDPA non-compliance | MED | Consent, privacy policy, retention, processors disclosed |
-| No CMS means slower updates | LOW | 6-month SLA; preview deploys; typed content |
+| No CMS means slower updates | LOW | 3-month SLA; preview deploys; typed content |
 | English copy inconsistency | MED | Approved naming table; human review |
 | Unverified permits/claims | HIGH | Omit until client supplies evidence |
 
@@ -1590,7 +1590,7 @@ A phase is done only when:
 9. Video upload account and final IDs.
 10. Analytics/ads: GA4 only, or Meta Pixel/Google Ads too?
 11. Canonical host: apex vs `www` (recommend apex).
-12. 6-month retainer hours/SLA.
+12. 3-month retainer hours/SLA.
 
 ---
 
