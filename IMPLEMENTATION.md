@@ -27,7 +27,7 @@ All decisions below reflect the confirmed conversation:
 - No CMS, no WordPress, no Framer, no VPS.
 - Next.js static export on Cloudflare Pages free tier.
 - Forms via one Cloudflare Pages Function.
-- Booking is a request form only.
+- Home-page booking and enquiry CTAs open WhatsApp with localized prefilled messages; the contact page also directs visitors to WhatsApp.
 - Pricing is “From RM” where figures exist, otherwise “Price on request”.
 - Price source is the image-only A4 flyers/posters until the client supplies figures.
 - 神主牌 is “Coming Soon” with notify-me.
@@ -48,7 +48,7 @@ Build a **bilingual, statically exported Next.js site** deployed to **Cloudflare
 |---|---|
 | Free hosting | Cloudflare Pages free: unlimited static requests/bandwidth, 500 builds/month |
 | Chinese + English | Pre-rendered `/` (Chinese) and `/en` (English) with correct `lang` and hreflang |
-| Low change volume | Git-based content + deploy; covered by the 6-month retainer |
+| Low change volume | Git-based content + deploy; covered by the 3-month retainer |
 | No WordPress security risk | No PHP, no plugins, no database, no admin login |
 | No CMS | Typed content files, build-time validation, preview URLs |
 | Forms | One Pages Function: Turnstile + Zod + Resend |
@@ -65,7 +65,7 @@ Build a **bilingual, statically exported Next.js site** deployed to **Cloudflare
 | VPS (“small server”) | Costs money, needs patching/backups/SSL; unnecessary for a static marketing site |
 | Vercel Hobby | Free plan is restricted to non-commercial use; this is a client business site |
 | Full Next.js SSR on Workers | Free Workers CPU is 10 ms/request; SSR/server actions are unnecessary and riskier |
-| CMS (Sanity/Payload) for v1 | Low change volume and 6-month retainer make it unnecessary complexity |
+| CMS (Sanity/Payload) for v1 | Low change volume and 3-month retainer make it unnecessary complexity |
 
 ---
 
@@ -161,7 +161,7 @@ Hong Yuan Hills is a Feng Shui memorial park and columbarium serving Chinese-Mal
 ### 4.2 Journeys
 
 **Immediate need**
-Home → tap 24h call/WhatsApp → Funeral Services → package/process → contact/lead.
+Home → tap 24h call/WhatsApp → Funeral Services → package/process → contact/WhatsApp.
 
 **Pre-planning**
 Search (Chinese/English) → Penglai or hall page → video/gallery → pricing → Book a Visit → WhatsApp follow-up.
@@ -170,7 +170,7 @@ Search (Chinese/English) → Penglai or hall page → video/gallery → pricing 
 Home/Services → Columbarium hub → 4 hall pages → video/panels → enquiry prefilled with the hall name.
 
 **Visit**
-Contact → map/directions (Google Maps/Waze) → book a visit form → confirmation/WhatsApp.
+Contact → map/directions (Google Maps/Waze) → book a visit via WhatsApp.
 
 **Seasonal**
 Qingming/中元/重阳 notice or ceremony page → gallery/events → contact (phase 2 for events).
@@ -716,24 +716,31 @@ Run before build: `npm run validate:content`.
 
 ### 10.1 Direction
 
-- “Quiet luxury” / Chinese landscape scroll: ivory paper, deep jade, warm gold, soft light.
-- Generous whitespace, editorial typography, full-bleed photography.
-- Rounded, soft type for Chinese headings; calm, readable body.
+- **Imperial Stone & Bronze (approved default):** porcelain ivory, antique bronze, dark stone, restrained heritage red and Chinese heritage details.
+- A distinguished memorial sanctuary — not a golf resort or luxury hotel. Quiet, warm, grounded and readable.
+- Generous whitespace, editorial typography, verified Hong Yuan Hills photography.
+- Rounded, soft Chinese type; calm, readable body.
 - Subtle motion: fades and 8px translations; no flashy parallax.
+- **Ivory** remains an alternate light theme via the footer theme switch.
+- Design kit/moodboard are art-direction references only. Production imagery must be verified Hong Yuan Hills photography, facilities and branding.
 
 ### 10.2 Color tokens
 
-| Token | Value | Usage |
+| Token | Imperial value | Usage |
 |---|---|---|
-| `--ink` | `#1C2A25` | Primary text |
-| `--jade` | `#1F4A3A` | Brand, links |
-| `--jade-deep` | `#123328` | Footer, dark sections |
-| `--gold` | `#B08D57` | Accents, rules, CTA |
-| `--gold-light` | `#D6C09A` | Hover, borders |
-| `--ivory` | `#F7F3EA` | Page background |
-| `--paper` | `#FBF8F1` | Cards |
-| `--stone` | `#8B8F86` | Muted text |
-| `--line` | `#DED6C6` | Borders |
+| `--ink` | `#201D15` | Primary text |
+| `--stone` | `#6B6458` | Muted text |
+| `--jade` | `#6B5338` | Links; token retained, now antique bronze |
+| `--jade-deep` | `#1C1A14` | Footer and dark sanctuary bands |
+| `--gold` | `#A88050` | Antique bronze accents/CTA |
+| `--gold-light` | `#D0C0A8` | Pale bronze/hover |
+| `--gold-dark` | `#7A5A2E` | Bronze text on ivory |
+| `--paper` | `#F5EFE6` | Page background |
+| `--ivory` | `#F8F0E8` | Porcelain ivory surfaces/light text |
+| `--line` | `#D8CBB8` | Bronze borders |
+| `--seal` | `#702828` | Restrained seal and tiny accents only |
+
+Ivory alternate: ink `#1C2A25`, jade `#1F4A3A`, deep `#123328`, gold `#B08D57`, ivory `#F7F3EA`, paper `#FBF8F1`, stone `#5F665F`, line `#DED6C6`.
 | Zizai accent | `#C9A227` + `#3E6B8A` | Hall page |
 | Benyuan accent | `#A66B3A` | Hall page |
 | Sanyuan accent | `#6E8B7B` + `#B9D6D0` | Hall page |
@@ -745,12 +752,12 @@ Verify contrast (4.5:1) for body text and gold-on-ivory combinations.
 
 | Role | Chinese | English |
 |---|---|---|
-| Display/headings | LXGW WenKai (subset) or licensed Kaiti | Cormorant Garamond |
-| Body | System CJK stack: `PingFang SC`, `Hiragino Sans GB`, `Microsoft YaHei`, `Noto Sans CJK SC` | Source Sans 3 |
+| Display/headings | LXGW WenKai subset (Kaiti-style) or licensed Kaiti | Cormorant Garamond |
+| Body | LXGW WenKai subset, then system CJK fallback | Source Sans 3 |
 | UI/labels | Same as body | Source Sans 3 |
-| Quotes | LXGW WenKai italic/subset | Cormorant Garamond italic |
+| Quotes | LXGW WenKai subset | Cormorant Garamond italic |
 
-**Font budget:** ≤300 KB initial webfont payload. Subset carefully. If the client insists on Kaiti for body, use `cn-font-split` unicode-range slicing and raise the budget with explicit approval.
+**Font budget:** ≤400 KB initial webfont payload. The current LXGW WenKai subset is ~221 KB. Re-subset when new Chinese glyphs are added; if the client supplies a licensed font, replace `cnFont` in `lib/fonts.ts`.
 
 ### 10.4 Scale and spacing
 
@@ -1313,7 +1320,7 @@ no-mistakes axi run --intent "<full user intent and decisions>"
 
 **Intent template:**
 
-> Build the Hong Yuan Hills bilingual memorial-park site without a CMS. Use static-export Next.js on Cloudflare Pages free tier; Chinese at `/`, English at `/en`; typed TS/MDX content; pricing as “From RM” from image flyers with “Price on request” fallback; booking request form only; forms via one Pages Function with Turnstile and Resend; no WordPress/Framer/VPS; preserve GoDaddy domain and email DNS; mobile-first, accessible, performance-budgeted.
+> Build the Hong Yuan Hills bilingual memorial-park site without a CMS. Use static-export Next.js on Cloudflare Pages free tier; Chinese at `/`, English at `/en`; typed TS/MDX content; pricing as “From RM” from image flyers with “Price on request” fallback; use WhatsApp as the point of communication, with localized prefilled booking and enquiry CTAs on the home page and a WhatsApp CTA on the contact page; do not add on-site contact or booking forms; no WordPress/Framer/VPS; preserve GoDaddy domain and email DNS; mobile-first, accessible, performance-budgeted.
 
 **Rules:**
 
@@ -1462,7 +1469,7 @@ Keep the Framer site live until the new deployment is tested on `*.pages.dev`; t
 - 24h: DNS/SSL/email/forms, errors, uptime.
 - 7d: indexing, Core Web Vitals, form delivery, 404s.
 - 30d: review analytics, adjust content/CTAs.
-- 6-month support: content updates, price changes, image swaps, minor fixes; defined SLA.
+- 3-month support: content updates, price changes, image swaps, minor fixes; defined SLA.
 
 ---
 
@@ -1494,7 +1501,7 @@ Keep the Framer site live until the new deployment is tested on `*.pages.dev`; t
 - Copy/price/image updates: 2 business days.
 - New section/page: 5 business days (scope quoted).
 - Emergency contact change: same day where feasible.
-- Included in the 6-month retainer; define monthly hours in the contract.
+- Included in the 3-month retainer; define monthly hours in the contract.
 
 ### 21.4 Future CMS path (not v1)
 
@@ -1507,7 +1514,7 @@ If the client later wants self-editing, use **Keystatic** (Git-based, no databas
 - `CONTENT.md` editing guide.
 - `RUNBOOK.md` DNS/rollback/forms.
 - 1-hour walkthrough.
-- After 6 months: hourly/retainer or CMS migration.
+- After 3 months: hourly/retainer or CMS migration.
 
 ---
 
@@ -1517,13 +1524,13 @@ If the client later wants self-editing, use **Keystatic** (Git-based, no databas
 |---|---|---|---|
 | 0. Foundations | 3–5 days | Git repo, Cloudflare/GitHub/Resend accounts, DNS audit, content/price/video checklist, no-mistakes init | Access confirmed; unknowns logged |
 | 1. Scaffold + design system | 1 week | Next.js static export, Tailwind tokens, fonts, layout shell, header/footer/mobile bar, language routing | `pnpm/npm build` produces `out/`; `/` and `/en` render correct `lang` |
-| 2. Home + forms | 1 week | Home page, contact CTAs, lead endpoint, Turnstile, Resend, preview mode | Form success/failure tested; mobile bar works |
+| 2. Home + forms | 1 week | Home page, WhatsApp contact CTAs, lead endpoint, Turnstile, Resend, preview mode | WhatsApp links and remaining form success/failure paths verified; mobile bar works |
 | 3. Product pages | 2 weeks | Penglai, columbarium hub, 4 hall pages, videos/galleries, pricing cards | All content renders; videos click-to-load |
 | 4. Remaining pages | 1 week | About, funeral, pre-planning, tablets, contact, legal, 404 | Navigation complete; redirects mapped |
 | 5. Content + SEO | 1 week | All copy, images, metadata, schema, sitemap, analytics | Client content review; validation passes |
 | 6. QA | 1 week | E2E, a11y, performance, mobile, form delivery, security headers | Budgets met; no serious a11y issues |
 | 7. Launch | 3–5 days | DNS cutover, smoke tests, monitoring, handover | Live, stable, rollback ready |
-| 8. Support | 6 months | Content updates, fixes, monitoring | SLA met |
+| 8. Support | 3 months | Content updates, fixes, monitoring | SLA met |
 
 **Critical path:** price figures, DNS/email access, video IDs, bilingual content sign-off. Build can start before these, using “Price on request” and placeholders, but launch cannot.
 
@@ -1564,7 +1571,7 @@ A phase is done only when:
 | Turnstile blocks some users | LOW | WhatsApp/call fallback; test accessibility |
 | Content/asset rights | MED | Client confirms photo/video rights; no stock without license |
 | PDPA non-compliance | MED | Consent, privacy policy, retention, processors disclosed |
-| No CMS means slower updates | LOW | 6-month SLA; preview deploys; typed content |
+| No CMS means slower updates | LOW | 3-month SLA; preview deploys; typed content |
 | English copy inconsistency | MED | Approved naming table; human review |
 | Unverified permits/claims | HIGH | Omit until client supplies evidence |
 
@@ -1583,7 +1590,7 @@ A phase is done only when:
 9. Video upload account and final IDs.
 10. Analytics/ads: GA4 only, or Meta Pixel/Google Ads too?
 11. Canonical host: apex vs `www` (recommend apex).
-12. 6-month retainer hours/SLA.
+12. 3-month retainer hours/SLA.
 
 ---
 

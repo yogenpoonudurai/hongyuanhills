@@ -18,7 +18,7 @@ export function FuneralServicesPage({ locale }: { locale: Locale }) {
     ui.whatsapp.funeral,
     contact.whatsappEmergency,
   );
-  const quoteHref = localizedHref(locale, "/contact#form");
+  const quoteHref = waLink(ui.whatsapp.booking, contact.whatsappBooking);
   const servicesHref = localizedHref(locale, "/#services");
 
   const breadcrumbs = [
@@ -221,7 +221,7 @@ export function FuneralServicesPage({ locale }: { locale: Locale }) {
           <p className="mt-3 text-xs leading-6 text-stone">
             {copy.packages.note}
           </p>
-          <ButtonLink href={quoteHref} variant="secondary" className="mt-6" showArrow>
+          <ButtonLink href={quoteHref} variant="secondary" target="_blank" rel="noreferrer" className="mt-6" showArrow>
             {copy.packages.cta}
           </ButtonLink>
         </div>

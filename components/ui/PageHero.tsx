@@ -11,6 +11,7 @@ type PageHeroProps = {
   intro: string;
   primaryHref: string;
   primaryLabel: string;
+  primaryExternal?: boolean;
   secondaryHref: string;
   secondaryLabel: string;
   breadcrumbs: Array<{ label: string; href?: string }>;
@@ -24,6 +25,7 @@ export function PageHero({
   intro,
   primaryHref,
   primaryLabel,
+  primaryExternal = false,
   secondaryHref,
   secondaryLabel,
   breadcrumbs,
@@ -55,7 +57,13 @@ export function PageHero({
           {intro}
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <ButtonLink href={primaryHref} variant="primary" showArrow>
+          <ButtonLink
+            href={primaryHref}
+            variant="primary"
+            target={primaryExternal ? "_blank" : undefined}
+            rel={primaryExternal ? "noreferrer" : undefined}
+            showArrow
+          >
             {primaryLabel}
           </ButtonLink>
           <ButtonLink

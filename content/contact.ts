@@ -3,7 +3,7 @@ import type { Locale } from "./types";
 export type ContactCopy = {
   meta: { title: string; description: string };
   hero: { eyebrow: string; title: string; intro: string };
-  form: { title: string; intro: string };
+  whatsapp: { title: string; intro: string };
   directions: { title: string; body: string; points: string[] };
   note: string;
 };
@@ -21,10 +21,10 @@ export const contactCopy: Record<Locale, ContactCopy> = {
       intro:
         "无论您正在为家人提前规划，或需要即时的殡仪协助，我们都愿意倾听并提供帮助。",
     },
-    form: {
-      title: "留下您的需求",
+    whatsapp: {
+      title: "通过 WhatsApp 与我们联系",
       intro:
-        "填写表格预约参观或咨询。我们会在办公时间内尽快与您联系；如需即时协助，请直接致电 24 小时热线。",
+        "点击下方按钮开启 WhatsApp 对话，预约参观或告诉我们您的需求。",
     },
     directions: {
       title: "到访与联络",
@@ -50,10 +50,10 @@ export const contactCopy: Record<Locale, ContactCopy> = {
       intro:
         "Whether you are planning ahead for your family or need immediate funeral assistance, we are here to listen and help.",
     },
-    form: {
-      title: "Tell us what you need",
+    whatsapp: {
+      title: "Message us on WhatsApp",
       intro:
-        "Complete the form to book a visit or make an enquiry. We reply during office hours; for immediate assistance, please call the 24-hour hotline.",
+        "Open a WhatsApp conversation to book a visit or tell us how we can help.",
     },
     directions: {
       title: "Visiting and contacting us",

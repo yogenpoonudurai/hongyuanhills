@@ -11,6 +11,9 @@ import { contact, mapsUrl, telHref, waLink } from "@/lib/contact";
 import { homeHref, localizedHref } from "@/lib/i18n";
 import { LanguageSwitchLink } from "@/components/layout/LanguageSwitchLink";
 import { ThemeSwitch } from "@/components/layout/ThemeSwitch";
+import { FacebookIcon, InstagramIcon } from "@/components/ui/Icons";
+import { socialProfiles } from "@/content/social";
+import Image from "next/image";
 
 export function Footer({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
@@ -21,22 +24,46 @@ export function Footer({ locale }: { locale: Locale }) {
     <footer className="bg-jade-deep text-ivory">
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 md:py-20 lg:grid-cols-4">
         <div>
-          <a href={home} className="inline-flex flex-col leading-none">
-            <span className="font-display text-2xl tracking-[0.14em]">
-              {copy.brand.name}
-            </span>
-            <span className="mt-1 text-[9px] font-semibold tracking-[0.38em] text-gold-light">
-              {copy.brand.latin}
+          <a href={home} className="inline-flex items-center gap-3 leading-none">
+            <Image src="/images/client-logo.avif" alt="" aria-hidden="true" width={32} height={32} className="h-8 w-8 shrink-0 object-contain" />
+            <span className="flex flex-col">
+              <span className="font-display text-2xl tracking-[0.14em]">
+                {copy.brand.name}
+              </span>
+              <span className="mt-1 text-[9px] font-semibold tracking-[0.38em] text-gold-light">
+                {copy.brand.latin}
+              </span>
             </span>
           </a>
           <p className="mt-5 max-w-xs text-sm leading-7 text-ivory/70">
             {copy.tagline}
           </p>
+          <span aria-hidden="true" className="mt-4 block h-px w-12 bg-seal/70" />
           <LanguageSwitchLink
             locale={locale}
             label={copy.otherLangLabel}
             className="mt-5 inline-flex text-xs font-semibold tracking-[0.14em] text-gold-light transition hover:text-ivory"
           />
+          <div className="mt-5 flex items-center gap-2">
+            <a
+              href={socialProfiles.facebook.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-ivory/20 text-ivory/70 transition hover:border-gold-light hover:text-gold-light"
+            >
+              <FacebookIcon className="h-4 w-4" />
+            </a>
+            <a
+              href={socialProfiles.instagram.url}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-ivory/20 text-ivory/70 transition hover:border-gold-light hover:text-gold-light"
+            >
+              <InstagramIcon className="h-4 w-4" />
+            </a>
+          </div>
         </div>
 
         <div>

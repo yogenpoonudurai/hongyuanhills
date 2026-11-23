@@ -7,7 +7,7 @@ import { halls } from "@/content/halls";
 import { getHallPrice } from "@/content/pricing";
 import { siteCopy } from "@/content/site";
 import type { Locale } from "@/content/types";
-import { waLink } from "@/lib/contact";
+import { contact, waLink } from "@/lib/contact";
 import { homeHref, localizedHref } from "@/lib/i18n";
 import { jsonLd } from "@/lib/jsonld";
 import { SITE_URL } from "@/lib/metadata";
@@ -16,7 +16,7 @@ import { formatFromPrice } from "@/lib/pricing";
 export function ColumbariumPage({ locale }: { locale: Locale }) {
   const copy = columbariumCopy[locale];
   const ui = siteCopy[locale];
-  const bookHref = localizedHref(locale, "/#book");
+  const bookHref = waLink(ui.whatsapp.booking, contact.whatsappBooking);
   const home = homeHref(locale);
   const servicesHref = localizedHref(locale, "/#services");
   const whatsappHref = waLink(ui.whatsapp.general);
@@ -85,6 +85,7 @@ export function ColumbariumPage({ locale }: { locale: Locale }) {
         title={copy.hero.title}
         intro={copy.hero.intro}
         primaryHref={bookHref}
+        primaryExternal
         primaryLabel={copy.hero.book}
         secondaryHref={whatsappHref}
         secondaryLabel={copy.hero.whatsapp}
@@ -324,7 +325,7 @@ export function ColumbariumPage({ locale }: { locale: Locale }) {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <ButtonLink href={bookHref} variant="primary" showArrow>
+            <ButtonLink href={bookHref} variant="primary" target="_blank" rel="noreferrer" showArrow>
               {copy.cta.book}
             </ButtonLink>
             <ButtonLink

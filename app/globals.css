@@ -1,49 +1,40 @@
 @import "tailwindcss";
 
-
-/* Sanctuary theme: cooler, mistier, deeper green and champagne. */
-html[data-theme="sanctuary"] {
-  --color-ink: #10251d;
-  --color-jade: #1e4a3a;
-  --color-jade-deep: #0c261d;
-  --color-gold: #b48c4e;
-  --color-gold-light: #dcc9a4;
-  --color-gold-dark: #7e5b2c;
-  --color-ivory: #f4f1e8;
-  --color-paper: #edf1e9;
-  --color-stone: #5b675f;
-  --color-line: #cbd5c7;
-}
-
-html[data-theme="sanctuary"] body {
-  background-image: radial-gradient(
-    ellipse at 50% 0%,
-    rgb(255 255 255 / 0.5),
-    transparent 58%
-  );
-}
-
-html[data-theme="sanctuary"] picture img {
-  filter: saturate(0.94) contrast(1.02);
-}
-
 @theme {
-  --color-ink: #1c2a25;
-  --color-jade: #1f4a3a;
-  --color-jade-deep: #123328;
-  --color-gold: #b08d57;
-  --color-gold-light: #d6c09a;
-  --color-ivory: #f7f3ea;
-  --color-paper: #fbf8f1;
-  --color-stone: #5f665f;
-  --color-gold-dark: #8c6a3b;
-  --color-line: #ded6c6;
+  /* Imperial Stone & Bronze — derived from the approved design kit/moodboard. */
+  --color-ink: #201d15;
+  --color-jade: #6b5338;
+  --color-jade-deep: #1c1a14;
+  --color-gold: #a88050;
+  --color-gold-light: #d0c0a8;
+  --color-gold-dark: #7a5a2e;
+  --color-ivory: #f8f0e8;
+  --color-paper: #f5efe6;
+  --color-stone: #6b6458;
+  --color-line: #d8cbb8;
+  --color-seal: #702828;
 
   --font-display: var(--font-cormorant), var(--font-cn), "LXGW WenKai",
     "Kaiti SC", "STKaiti", "KaiTi", "Noto Serif SC", serif;
   --font-body: var(--font-source-sans), var(--font-cn), "LXGW WenKai",
     "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
     "Noto Sans CJK SC", sans-serif;
+}
+
+
+/* Alternate light theme retained for readability and client comparison. */
+html[data-theme="ivory"] {
+  --color-ink: #1c2a25;
+  --color-jade: #1f4a3a;
+  --color-jade-deep: #123328;
+  --color-gold: #b08d57;
+  --color-gold-light: #d6c09a;
+  --color-gold-dark: #8c6a3b;
+  --color-ivory: #f7f3ea;
+  --color-paper: #fbf8f1;
+  --color-stone: #5f665f;
+  --color-line: #ded6c6;
+  --color-seal: #8b3a32;
 }
 
 @layer base {
@@ -58,9 +49,18 @@ html[data-theme="sanctuary"] picture img {
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    background-image: radial-gradient(
+      ellipse at 50% 0%,
+      rgb(255 250 243 / 0.7),
+      transparent 58%
+    );
     transition:
       background-color 300ms ease,
       color 300ms ease;
+  }
+
+  html[data-theme="ivory"] body {
+    background-image: none;
   }
 
   [lang="zh-Hans"] body {
@@ -114,6 +114,16 @@ html[data-theme="sanctuary"] picture img {
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--color-jade);
+  }
+
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 0.375rem;
+    height: 0.375rem;
+    margin-right: 0.5rem;
+    background-color: var(--color-seal);
+    vertical-align: 0.125em;
   }
 
   .section-title {

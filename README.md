@@ -81,12 +81,36 @@ Playwright covers both locales, mobile overflow, the mobile drawer, image loadin
 
 ## Theme and fonts
 
-- **Ivory** is the default theme; **Sanctuary** is a cooler, mistier premium variant. Toggle it in the footer; the choice persists in `localStorage`.
-- The Sanctuary palette lives in `app/globals.css` under `html[data-theme="sanctuary"]`.
+**Default theme: Imperial Stone & Bronze**, derived from `references/Hong Yuan Hills Design Kit (1).png` and `references/Hong Yuan Hills Design System Moodboard.png`. The footer switches to **Ivory** for a lighter, cooler alternative.
+
+| Token | Value | Use |
+|---|---|---|
+| Porcelain ivory | `#F5EFE6` / `#F8F0E8` | Page and light section surfaces |
+| Antique bronze | `#A88050` / `#D0C0A8` | Accents, rules, primary buttons |
+| Dark stone | `#201D15` / `#1C1A14` | Text and dark sanctuary bands |
+| Heritage red | `#702828` | Restrained seal marks and tiny accents only |
+| Muted stone | `#6B6458` | Secondary text |
+| Bronze line | `#D8CBB8` | Borders and dividers |
+
 - Chinese uses a self-hosted, subset **LXGW WenKai** (Kaiti-style, SIL OFL 1.1). The file is `assets/fonts/LXGWWenKai-Regular.woff2`; the licence is `public/fonts/OFL-LXGWWenKai.txt`.
 - The subset currently covers every CJK character in the source. If new Chinese copy introduces new characters, re-subset the font before release; otherwise those glyphs fall back to the system Kaiti stack.
 - English display/body fonts are self-hosted Cormorant Garamond and Source Sans 3 via `next/font/google`.
 - If the client supplies a specific licensed font, replace `cnFont` in `lib/fonts.ts` and keep the same `--font-cn` variable.
+
+### Photography and design-reference rule
+
+- The design kit/moodboard are **art direction references only**. Concept images from those boards must not be shipped as production photography.
+- Production imagery is taken from verified Hong Yuan Hills photography and facilities in `references/HONG YUAN HILLS/`.
+- The client logo is stored at `public/images/client-logo.avif` and used in the header, home hero, and footer.
+
+
+## Social links
+
+- Facebook: `https://www.facebook.com/hyhills.my/`
+- Instagram: `https://www.instagram.com/hongyuanhills/`
+- The home page has a native "Follow Us" section and the footer has icon links. There are no iframes, platform scripts, cookies or paid widgets.
+- To show actual post cards, either add curated post URLs/images to `content/social.ts`, or wire a build-time Meta Graph API sync (Instagram Business/Creator + Facebook Page, long-lived token). The Graph API route keeps content static and avoids client-side Meta scripts.
+- Public Instagram HTML is login-gated, so a real feed cannot be scraped reliably or within platform terms.
 
 ## Environment
 
@@ -121,7 +145,7 @@ Copy `.dev.vars.example` to `.dev.vars` for local function secrets.
 
 For local form testing, set `NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA` in `.env.local` before building, and set `TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA` in `.dev.vars`. These are Cloudflare's public always-pass test keys. Use `EMAIL_TRANSPORT=noop` so no real emails are sent.
 
-The home page includes the booking/enquiry form at `#book`. Production requires real Turnstile keys, a verified Resend domain, and `ALLOWED_ORIGINS` set to the live domain.
+Home page booking and contact page enquiries open a prefilled WhatsApp conversation. Production form submissions on pre-planning and ancestral tablets require real Turnstile keys, a verified Resend domain, and `ALLOWED_ORIGINS` set to the live domain.
 
 ## Repository notes
 
@@ -129,7 +153,7 @@ The home page includes the booking/enquiry form at `#book`. Production requires 
 - Optimised public images live in `public/images/` as `.jpg` + `.webp`.
 - Content lives in `content/`; update both `zh` and `en` values.
 - Built routes in both languages: `/`, `/about`, `/news` and article pages, `/services/feng-shui-grounds`, `/services/columbarium`, the four hall detail pages, `/services/funeral-services`, `/services/ancestral-tablets`, `/pre-planning`, `/contact`, `/privacy-policy` and `/terms`.
-- The home booking form and the contact/pre-planning forms use `/api/lead`; the ancestral tablets page uses the same endpoint in notify mode.
+- Pre-planning and ancestral tablets forms use `/api/lead`; the ancestral tablets page uses the same endpoint in notify mode.
 - Hall videos currently show a “coming soon” poster until YouTube IDs are supplied.
 - Remaining: final YouTube IDs, approved price figures, client/legal review of the draft privacy policy and terms, Cloudflare deployment and DNS cutover.
 - `/services` and the old Framer URLs redirect to the closest equivalent.

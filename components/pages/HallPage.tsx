@@ -8,7 +8,7 @@ import { halls } from "@/content/halls";
 import { getHallPrice } from "@/content/pricing";
 import { siteCopy } from "@/content/site";
 import type { Hall, Locale } from "@/content/types";
-import { waLink } from "@/lib/contact";
+import { contact, waLink } from "@/lib/contact";
 import { homeHref, localizedHref } from "@/lib/i18n";
 import { jsonLd } from "@/lib/jsonld";
 import { SITE_URL } from "@/lib/metadata";
@@ -16,7 +16,7 @@ import { formatFromPrice, priceDisclaimer } from "@/lib/pricing";
 
 export function HallPage({ hall, locale }: { hall: Hall; locale: Locale }) {
   const ui = siteCopy[locale];
-  const bookHref = localizedHref(locale, "/#book");
+  const bookHref = waLink(ui.whatsapp.booking, contact.whatsappBooking);
   const whatsappHref = waLink(ui.whatsapp.general);
   const price = getHallPrice(hall.slug);
   const firstGalleryImage =
@@ -99,6 +99,7 @@ export function HallPage({ hall, locale }: { hall: Hall; locale: Locale }) {
         title={hall.name[locale]}
         intro={hall.summary[locale]}
         primaryHref={bookHref}
+        primaryExternal
         primaryLabel={locale === "zh" ? "预约参观" : "Book a Visit"}
         secondaryHref={whatsappHref}
         secondaryLabel={locale === "zh" ? "WhatsApp 咨询" : "WhatsApp Us"}
@@ -142,7 +143,7 @@ export function HallPage({ hall, locale }: { hall: Hall; locale: Locale }) {
           <p className="mt-4 text-[15px] leading-7 text-ink/70">
             {hall.locationNote[locale]}
           </p>
-          <ButtonLink href={bookHref} variant="secondary" className="mt-7" showArrow>
+          <ButtonLink href={bookHref} variant="secondary" target="_blank" rel="noreferrer" className="mt-7" showArrow>
             {locale === "zh" ? "预约参观" : "Book a Visit"}
           </ButtonLink>
         </div>
@@ -259,7 +260,7 @@ export function HallPage({ hall, locale }: { hall: Hall; locale: Locale }) {
             </p>
             <p className="mt-3 text-xs leading-6 text-stone">{hall.locationNote[locale]}</p>
             <div className="mt-6 flex flex-col gap-3">
-              <ButtonLink href={bookHref} variant="primary" showArrow>
+              <ButtonLink href={bookHref} variant="primary" target="_blank" rel="noreferrer" showArrow>
                 {locale === "zh" ? "预约参观" : "Book a Visit"}
               </ButtonLink>
               <ButtonLink

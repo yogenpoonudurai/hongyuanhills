@@ -1,8 +1,8 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { approvedSiteContract } from "../contracts/approved-site-contract";
 
 const articleSlug = "online-visit-requests";
-
 test.describe("news and updates", () => {
   test("hub lists posts and has bilingual metadata", async ({ page }) => {
     await page.goto("/news");
@@ -30,11 +30,11 @@ test.describe("news and updates", () => {
     await page.goto(`/news/${articleSlug}`);
 
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "网上预约参观",
+      "WhatsApp 预约参观",
     );
     await expect(page.locator('time[datetime="2026-11-21"]')).toBeVisible();
     await expect(
-      page.getByText("网站表格不适用于紧急情况", { exact: false }),
+      page.getByText("预约参观与一般查询可通过 WhatsApp 联系我们", { exact: false }),
     ).toBeVisible();
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       "href",
@@ -44,7 +44,7 @@ test.describe("news and updates", () => {
 
     await page.goto(`/en/news/${articleSlug}`);
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "Online visit requests",
+      "Book a visit via WhatsApp",
     );
   });
 
@@ -52,8 +52,12 @@ test.describe("news and updates", () => {
     await page.goto("/");
     const section = page.locator("#news");
     await expect(section.getByRole("heading", { name: "最新消息" })).toBeVisible();
-    await expect(section.locator("article")).toHaveCount(3);
-    await expect(section.locator(`a[href*="/news/${articleSlug}"]`).first()).toBeVisible();
+    const postLinks = section.locator('a[href^="/news/"]');
+    await expect(postLinks).toHaveCount(approvedSiteContract.homeNews.length);
+    for (const post of approvedSiteContract.homeNews) {
+      const postLink = section.getByRole("link", { name: post.title });
+      await expect(postLink).toHaveAttribute("href", `/news/${post.slug}/`);
+    }
   });
 
   test("language switch maps a news article", async ({ page }) => {

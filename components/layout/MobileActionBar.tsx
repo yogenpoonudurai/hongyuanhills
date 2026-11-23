@@ -2,7 +2,6 @@ import { PhoneIcon, WhatsAppIcon, CalendarIcon } from "@/components/ui/Icons";
 import { siteCopy } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { contact, telHref, waLink } from "@/lib/contact";
-import { localizedHref } from "@/lib/i18n";
 
 export function MobileActionBar({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
@@ -32,7 +31,9 @@ export function MobileActionBar({ locale }: { locale: Locale }) {
           WhatsApp
         </a>
         <a
-          href={localizedHref(locale, "/#book")}
+          href={waLink(copy.whatsapp.booking, contact.whatsappBooking)}
+          target="_blank"
+          rel="noreferrer"
           aria-label={copy.cta.book}
           className="flex h-14 flex-col items-center justify-center gap-1 text-[10px] font-semibold tracking-wide text-jade"
         >

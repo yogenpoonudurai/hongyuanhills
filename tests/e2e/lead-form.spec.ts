@@ -1,72 +1,72 @@
 import { expect, test } from "@playwright/test";
+import { approvedSiteContract } from "../contracts/approved-site-contract";
 
-test.describe("booking form", () => {
-  test("shows validation errors for required fields", async ({ page }) => {
-    await page.goto("/");
-    await page.locator("#book").scrollIntoViewIfNeeded();
-    await page.getByRole("button", { name: "提交预约" }).click();
+function approvedWhatsAppHref(message: string) {
+  return `https://wa.me/${approvedSiteContract.whatsapp.number}?text=${encodeURIComponent(message)}`;
+}
 
-    await expect(page.getByText("请填写姓名。")).toBeVisible();
-    await expect(page.getByLabel("姓名")).toHaveAttribute(
-      "aria-invalid",
-      "true",
-    );
-  });
-
-  test("submits a valid request and shows the success state", async ({
+test.describe("WhatsApp booking and contact", () => {
+  test("home booking entry points open the prefilled WhatsApp conversation", async ({
     page,
   }) => {
-    await page.route("**/api/lead", async (route) => {
-      const body = route.request().postDataJSON() as {
-        type: string;
-        consent: boolean;
-      };
-      expect(body.type).toBe("visit");
-      expect(body.consent).toBe(true);
-      await route.fulfill({
-        status: 200,
-        contentType: "application/json",
-        body: JSON.stringify({ ok: true }),
-      });
-    });
-
     await page.goto("/");
-    await page.locator("#book").scrollIntoViewIfNeeded();
-    await page.getByLabel("姓名").fill("Test User");
-    await page.getByLabel("联络电话").fill("+60 12-345 6789");
-    await page.getByRole("checkbox").check();
-    await page.getByRole("button", { name: "提交预约" }).click();
 
-    await expect(page.getByRole("status")).toContainText("预约请求已收到");
-  });
-
-  test("shows WhatsApp fallback when the API is unavailable", async ({
-    page,
-  }) => {
-    await page.route("**/api/lead", (route) =>
-      route.fulfill({
-        status: 503,
-        contentType: "application/json",
-        body: JSON.stringify({
-          ok: false,
-          error: "form_disabled",
-          fallback: "whatsapp",
-        }),
-      }),
-    );
-
-    await page.goto("/");
-    await page.locator("#book").scrollIntoViewIfNeeded();
-    await page.getByLabel("姓名").fill("Test User");
-    await page.getByLabel("联络电话").fill("+60 12-345 6789");
-    await page.getByRole("checkbox").check();
-    await page.getByRole("button", { name: "提交预约" }).click();
-
-    const alert = page.locator("#book").getByRole("alert");
-    await expect(alert).toContainText("如果表格无法提交");
-    await expect(alert.getByRole("link", { name: "WhatsApp" })).toHaveAttribute(
+    const headerBooking = page.getByRole("link", { name: "预约参观" }).first();
+    await expect(headerBooking).toHaveAttribute(
       "href",
-      /wa\.me/,
+      approvedWhatsAppHref(approvedSiteContract.whatsapp.messages.zh.booking),
+    );
+    await expect(headerBooking).toHaveAttribute("target", "_blank");
+
+    const heroBooking = page.getByRole("link", { name: "预约参观" }).nth(1);
+    await expect(heroBooking).toHaveAttribute(
+      "href",
+      approvedWhatsAppHref(approvedSiteContract.whatsapp.messages.zh.booking),
+    );
+    await expect(heroBooking).toHaveAttribute("target", "_blank");
+
+    const heroEnquiry = page.getByRole("link", { name: "WhatsApp 咨询" });
+    await expect(heroEnquiry).toHaveAttribute(
+      "href",
+      approvedWhatsAppHref(approvedSiteContract.whatsapp.messages.zh.general),
+    );
+  });
+
+  test("contact page offers WhatsApp as its primary contact path", async ({
+    page,
+  }) => {
+    await page.goto("/contact");
+
+    const heroWhatsApp = page.getByRole("link", { name: "WhatsApp 咨询" }).first();
+    await expect(heroWhatsApp).toHaveAttribute(
+      "href",
+      approvedWhatsAppHref(approvedSiteContract.whatsapp.messages.zh.general),
+    );
+    await expect(heroWhatsApp).toHaveAttribute("target", "_blank");
+    await expect(page.locator("form")).toHaveCount(0);
+    await expect(
+      page.getByRole("heading", { name: "通过 WhatsApp 与我们联系" }),
+    ).toBeVisible();
+  });
+
+  test("English contact page uses localized WhatsApp guidance", async ({
+    page,
+  }) => {
+    await page.goto("/en/contact");
+    await expect(
+      page.getByRole("heading", { name: "Message us on WhatsApp" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "WhatsApp Us" }).first(),
+    ).toHaveAttribute(
+      "href",
+      approvedWhatsAppHref(approvedSiteContract.whatsapp.messages.en.general),
+    );
+
+    const booking = page.getByRole("link", { name: "Book a Visit" });
+    await expect(booking).toHaveAttribute(
+      "href",
+      approvedWhatsAppHref(approvedSiteContract.whatsapp.messages.en.booking),
     );
   });
 });

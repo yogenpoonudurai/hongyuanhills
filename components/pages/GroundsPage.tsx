@@ -8,7 +8,7 @@ import { Picture } from "@/components/ui/Picture";
 import { groundsCopy, groundsGallery, groundsImages } from "@/content/grounds";
 import { siteCopy } from "@/content/site";
 import type { Locale } from "@/content/types";
-import { waLink } from "@/lib/contact";
+import { contact, waLink } from "@/lib/contact";
 import { homeHref, localizedHref } from "@/lib/i18n";
 import { jsonLd } from "@/lib/jsonld";
 import { SITE_URL } from "@/lib/metadata";
@@ -16,7 +16,7 @@ import { SITE_URL } from "@/lib/metadata";
 export function GroundsPage({ locale }: { locale: Locale }) {
   const copy = groundsCopy[locale];
   const ui = siteCopy[locale];
-  const bookHref = localizedHref(locale, "/#book");
+  const bookHref = waLink(ui.whatsapp.booking, contact.whatsappBooking);
   const home = homeHref(locale);
   const servicesHref = localizedHref(locale, "/#services");
   const whatsappHref = waLink(ui.whatsapp.general);
@@ -105,6 +105,7 @@ export function GroundsPage({ locale }: { locale: Locale }) {
         title={copy.hero.title}
         intro={copy.hero.intro}
         primaryHref={bookHref}
+        primaryExternal
         primaryLabel={copy.hero.book}
         secondaryHref={whatsappHref}
         secondaryLabel={copy.hero.whatsapp}
@@ -393,7 +394,7 @@ export function GroundsPage({ locale }: { locale: Locale }) {
                 {ui.cta.priceOnRequest}
               </p>
               <div className="mt-6 flex flex-col gap-3">
-                <ButtonLink href={bookHref} variant="primary" showArrow>
+                <ButtonLink href={bookHref} variant="primary" target="_blank" rel="noreferrer" showArrow>
                   {copy.pricing.cta}
                 </ButtonLink>
                 <ButtonLink
@@ -443,7 +444,7 @@ export function GroundsPage({ locale }: { locale: Locale }) {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <ButtonLink href={bookHref} variant="primary" showArrow>
+            <ButtonLink href={bookHref} variant="primary" target="_blank" rel="noreferrer" showArrow>
               {copy.cta.book}
             </ButtonLink>
             <ButtonLink

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   ChevronDownIcon,
@@ -14,15 +15,29 @@ import { nav, servicesMenu, siteCopy } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { contact, telHref, waLink } from "@/lib/contact";
 import { alternateHref, homeHref, localizedHref } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
 
 export function Header({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
   const pathname = usePathname() ?? "/";
   const home = homeHref(locale);
+  const isHome = pathname === "/" || pathname === "/en" || pathname === "/en/";
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const transparent = isHome && !scrolled;
 
   const switchHref = alternateHref(locale, pathname);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    const frame = requestAnimationFrame(onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -44,13 +59,36 @@ export function Header({ locale }: { locale: Locale }) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/70 bg-paper/95 backdrop-blur-md">
-      <div className="hidden border-b border-line/60 bg-ivory/80 md:block">
-        <div className="container-page flex h-10 items-center justify-between text-[11px] tracking-[0.12em] text-stone">
+    <header
+      className={cn(
+        "top-0 z-40 border-b transition-colors duration-300",
+        isHome ? "fixed inset-x-0" : "sticky",
+        transparent
+          ? "border-transparent bg-transparent"
+          : "border-line/70 bg-paper/95 backdrop-blur-md",
+      )}
+    >
+      <div
+        className={cn(
+          "hidden border-b md:block",
+          transparent
+            ? "border-ivory/15 bg-transparent"
+            : "border-line/60 bg-ivory/80",
+        )}
+      >
+        <div
+          className={cn(
+            "container-page flex h-10 items-center justify-between text-[11px] tracking-[0.12em]",
+            transparent ? "text-ivory/70" : "text-stone",
+          )}
+        >
           <div className="flex items-center gap-6">
             <a
               href={telHref(contact.phone24h)}
-              className="flex items-center gap-2 transition hover:text-jade"
+              className={cn(
+                "flex items-center gap-2 transition",
+                transparent ? "hover:text-gold-light" : "hover:text-jade",
+              )}
             >
               <PhoneIcon className="h-3.5 w-3.5" />
               <span>
@@ -59,7 +97,10 @@ export function Header({ locale }: { locale: Locale }) {
             </a>
             <a
               href={`mailto:${contact.email}`}
-              className="flex items-center gap-2 transition hover:text-jade"
+              className={cn(
+                "flex items-center gap-2 transition",
+                transparent ? "hover:text-gold-light" : "hover:text-jade",
+              )}
             >
               <MailIcon className="h-3.5 w-3.5" />
               <span>{contact.email}</span>
@@ -69,7 +110,12 @@ export function Header({ locale }: { locale: Locale }) {
             <span>{copy.location}</span>
             <a
               href={switchHref}
-              className="font-semibold text-jade transition hover:text-gold"
+              className={cn(
+                "font-semibold transition",
+                transparent
+                  ? "text-gold-light hover:text-ivory"
+                  : "text-jade hover:text-gold",
+              )}
             >
               {copy.otherLangLabel}
             </a>
@@ -78,13 +124,15 @@ export function Header({ locale }: { locale: Locale }) {
       </div>
 
       <div className="container-page flex h-[4.5rem] items-center justify-between gap-4">
-        <a href={home} className="group flex flex-col leading-none">
-          <span className="font-display text-[1.45rem] tracking-[0.16em] text-ink transition group-hover:text-jade">
-            {copy.brand.name}
-          </span>
-          <span className="mt-1 text-[9px] font-semibold tracking-[0.38em] text-stone">
-            {copy.brand.latin}
-          </span>
+        <a href={home} className="group flex items-center">
+          <Image
+            src="/images/client-logo.avif"
+            alt={`${copy.brand.name} ${copy.brand.latin}`}
+            width={48}
+            height={48}
+            priority
+            className="h-11 w-11 object-contain transition group-hover:opacity-90"
+          />
         </a>
 
         <nav
@@ -95,13 +143,25 @@ export function Header({ locale }: { locale: Locale }) {
             <a
               key={item.id}
               href={localizedHref(locale, item.href)}
-              className="text-[13px] font-medium tracking-[0.08em] text-ink/80 transition hover:text-jade"
+              className={cn(
+                "text-[13px] font-medium tracking-[0.08em] transition",
+                transparent
+                  ? "text-ivory/80 hover:text-gold-light"
+                  : "text-ink/80 hover:text-jade",
+              )}
             >
               {item.label[locale]}
             </a>
           ))}
           <details className="group relative">
-            <summary className="flex cursor-pointer list-none items-center gap-1 text-[13px] font-medium tracking-[0.08em] text-ink/80 transition hover:text-jade [&::-webkit-details-marker]:hidden">
+            <summary
+              className={cn(
+                "flex cursor-pointer list-none items-center gap-1 text-[13px] font-medium tracking-[0.08em] transition [&::-webkit-details-marker]:hidden",
+                transparent
+                  ? "text-ivory/80 hover:text-gold-light"
+                  : "text-ink/80 hover:text-jade",
+              )}
+            >
               {copy.navServices}
               <ChevronDownIcon className="h-3.5 w-3.5 transition group-open:rotate-180" />
             </summary>
@@ -123,12 +183,19 @@ export function Header({ locale }: { locale: Locale }) {
           <a
             href={telHref(contact.phone24h)}
             aria-label={copy.labels.phone24}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-jade transition hover:border-gold md:hidden"
+            className={cn(
+              "inline-flex h-10 w-10 items-center justify-center rounded-full border transition md:hidden",
+              transparent
+                ? "border-ivory/30 text-ivory hover:border-gold-light"
+                : "border-line text-jade hover:border-gold",
+            )}
           >
             <PhoneIcon className="h-[1.125rem] w-[1.125rem]" />
           </a>
           <a
-            href={localizedHref(locale, "/#book")}
+            href={waLink(copy.whatsapp.booking, contact.whatsappBooking)}
+            target="_blank"
+            rel="noreferrer"
             className="hidden h-10 items-center rounded-full bg-gold px-5 text-xs font-semibold tracking-[0.08em] text-ink transition hover:bg-gold-light sm:inline-flex"
           >
             {copy.cta.book}
@@ -139,7 +206,12 @@ export function Header({ locale }: { locale: Locale }) {
             aria-label={copy.cta.menu}
             aria-controls="mobile-menu"
             aria-expanded={open}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-jade transition hover:border-gold lg:hidden"
+            className={cn(
+              "inline-flex h-10 w-10 items-center justify-center rounded-full border transition lg:hidden",
+              transparent
+                ? "border-ivory/30 text-ivory hover:border-gold-light"
+                : "border-line text-jade hover:border-gold",
+            )}
           >
             <MenuIcon className="h-5 w-5" />
           </button>
@@ -162,14 +234,13 @@ export function Header({ locale }: { locale: Locale }) {
             className="absolute right-0 top-0 flex h-dvh w-[min(92vw,380px)] flex-col bg-paper shadow-2xl"
           >
             <div className="flex items-center justify-between border-b border-line px-6 py-5">
-              <div className="flex flex-col leading-none">
-                <span className="font-display text-xl tracking-[0.14em] text-ink">
-                  {copy.brand.name}
-                </span>
-                <span className="mt-1 text-[9px] font-semibold tracking-[0.34em] text-stone">
-                  {copy.brand.latin}
-                </span>
-              </div>
+              <Image
+                src="/images/client-logo.avif"
+                alt={`${copy.brand.name} ${copy.brand.latin}`}
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain"
+              />
               <button
                 ref={closeRef}
                 type="button"
@@ -243,8 +314,9 @@ export function Header({ locale }: { locale: Locale }) {
 
             <div className="border-t border-line px-6 py-5">
               <a
-                href={localizedHref(locale, "/#book")}
-                onClick={() => setOpen(false)}
+                href={waLink(copy.whatsapp.booking, contact.whatsappBooking)}
+                target="_blank"
+                rel="noreferrer"
                 className="flex min-h-12 items-center justify-center rounded-full bg-gold px-5 text-sm font-semibold text-ink"
               >
                 {copy.cta.book}

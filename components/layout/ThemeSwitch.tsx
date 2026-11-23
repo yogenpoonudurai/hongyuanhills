@@ -3,11 +3,11 @@
 import { useSyncExternalStore } from "react";
 import type { Locale } from "@/content/types";
 
-type Theme = "ivory" | "sanctuary";
+type Theme = "imperial" | "ivory";
 
 const labels = {
-  zh: { group: "主题", ivory: "经典", sanctuary: "静谧" },
-  en: { group: "Theme", ivory: "Ivory", sanctuary: "Sanctuary" },
+  zh: { group: "主题", imperial: "御石", ivory: "象牙" },
+  en: { group: "Theme", imperial: "Imperial", ivory: "Ivory" },
 } as const;
 
 function subscribe(callback: () => void) {
@@ -16,18 +16,18 @@ function subscribe(callback: () => void) {
 }
 
 function getSnapshot(): Theme {
-  return document.documentElement.dataset.theme === "sanctuary"
-    ? "sanctuary"
-    : "ivory";
+  return document.documentElement.dataset.theme === "ivory"
+    ? "ivory"
+    : "imperial";
 }
 
 function getServerSnapshot(): Theme {
-  return "ivory";
+  return "imperial";
 }
 
 function applyTheme(theme: Theme) {
-  if (theme === "sanctuary") {
-    document.documentElement.dataset.theme = "sanctuary";
+  if (theme === "ivory") {
+    document.documentElement.dataset.theme = "ivory";
   } else {
     delete document.documentElement.dataset.theme;
   }
@@ -49,7 +49,7 @@ export function ThemeSwitch({ locale }: { locale: Locale }) {
       aria-label={copy.group}
       className="inline-flex items-center rounded-full border border-ivory/25 p-0.5"
     >
-      {(["ivory", "sanctuary"] as const).map((value) => {
+      {(["imperial", "ivory"] as const).map((value) => {
         const active = theme === value;
         return (
           <button
