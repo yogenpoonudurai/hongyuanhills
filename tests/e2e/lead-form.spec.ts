@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test";
-import { approvedContact } from "../contracts/contact";
+import { approvedSiteContract } from "../contracts/approved-site-contract";
 
 function approvedWhatsAppHref(message: string) {
-  return `https://wa.me/${approvedContact.whatsappNumber}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${approvedSiteContract.whatsapp.number}?text=${encodeURIComponent(message)}`;
 }
 
 test.describe("WhatsApp booking and contact", () => {
@@ -14,21 +14,21 @@ test.describe("WhatsApp booking and contact", () => {
     const headerBooking = page.getByRole("link", { name: "预约参观" }).first();
     await expect(headerBooking).toHaveAttribute(
       "href",
-      approvedWhatsAppHref(approvedContact.messages.zh.booking),
+      approvedWhatsAppHref(approvedSiteContract.whatsapp.messages.zh.booking),
     );
     await expect(headerBooking).toHaveAttribute("target", "_blank");
 
     const heroBooking = page.getByRole("link", { name: "预约参观" }).nth(1);
     await expect(heroBooking).toHaveAttribute(
       "href",
-      approvedWhatsAppHref(approvedContact.messages.zh.booking),
+      approvedWhatsAppHref(approvedSiteContract.whatsapp.messages.zh.booking),
     );
     await expect(heroBooking).toHaveAttribute("target", "_blank");
 
     const heroEnquiry = page.getByRole("link", { name: "WhatsApp 咨询" });
     await expect(heroEnquiry).toHaveAttribute(
       "href",
-      approvedWhatsAppHref(approvedContact.messages.zh.general),
+      approvedWhatsAppHref(approvedSiteContract.whatsapp.messages.zh.general),
     );
   });
 
@@ -40,7 +40,7 @@ test.describe("WhatsApp booking and contact", () => {
     const heroWhatsApp = page.getByRole("link", { name: "WhatsApp 咨询" }).first();
     await expect(heroWhatsApp).toHaveAttribute(
       "href",
-      approvedWhatsAppHref(approvedContact.messages.zh.general),
+      approvedWhatsAppHref(approvedSiteContract.whatsapp.messages.zh.general),
     );
     await expect(heroWhatsApp).toHaveAttribute("target", "_blank");
     await expect(page.locator("form")).toHaveCount(0);
@@ -60,7 +60,13 @@ test.describe("WhatsApp booking and contact", () => {
       page.getByRole("link", { name: "WhatsApp Us" }).first(),
     ).toHaveAttribute(
       "href",
-      approvedWhatsAppHref(approvedContact.messages.en.general),
+      approvedWhatsAppHref(approvedSiteContract.whatsapp.messages.en.general),
+    );
+
+    const booking = page.getByRole("link", { name: "Book a Visit" });
+    await expect(booking).toHaveAttribute(
+      "href",
+      approvedWhatsAppHref(approvedSiteContract.whatsapp.messages.en.booking),
     );
   });
 });

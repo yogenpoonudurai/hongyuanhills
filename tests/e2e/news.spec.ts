@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { approvedSiteContract } from "../contracts/approved-site-contract";
 
 const articleSlug = "online-visit-requests";
 test.describe("news and updates", () => {
@@ -52,7 +53,11 @@ test.describe("news and updates", () => {
     const section = page.locator("#news");
     await expect(section.getByRole("heading", { name: "最新消息" })).toBeVisible();
     const postLinks = section.locator('a[href^="/news/"]');
-    await expect(postLinks).toHaveCount(3);
+    await expect(postLinks).toHaveCount(approvedSiteContract.homeNews.length);
+    for (const post of approvedSiteContract.homeNews) {
+      const postLink = section.getByRole("link", { name: post.title });
+      await expect(postLink).toHaveAttribute("href", `/news/${post.slug}/`);
+    }
   });
 
   test("language switch maps a news article", async ({ page }) => {

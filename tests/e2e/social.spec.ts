@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { approvedSiteContract } from "../contracts/approved-site-contract";
 
 test.describe("social links", () => {
   test("home page shows Facebook and Instagram links", async ({ page }) => {
@@ -8,17 +9,17 @@ test.describe("social links", () => {
     await expect(section.getByRole("heading", { name: "在社群中与我们保持联系。" })).toBeVisible();
     await expect(
       section.getByRole("link", { name: /Facebook 专页/ }),
-    ).toHaveAttribute("href", "https://www.facebook.com/hyhills.my/");
+    ).toHaveAttribute("href", approvedSiteContract.social.facebook);
     await expect(
       section.getByRole("link", { name: /Instagram 主页/ }),
-    ).toHaveAttribute("href", "https://www.instagram.com/hongyuanhills/");
+    ).toHaveAttribute("href", approvedSiteContract.social.instagram);
 
     await expect(
       page.locator('footer a[aria-label="Facebook"]'),
-    ).toHaveAttribute("href", "https://www.facebook.com/hyhills.my/");
+    ).toHaveAttribute("href", approvedSiteContract.social.facebook);
     await expect(
       page.locator('footer a[aria-label="Instagram"]'),
-    ).toHaveAttribute("href", "https://www.instagram.com/hongyuanhills/");
+    ).toHaveAttribute("href", approvedSiteContract.social.instagram);
   });
 
   test("English social section renders", async ({ page }) => {
