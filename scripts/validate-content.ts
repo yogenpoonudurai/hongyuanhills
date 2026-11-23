@@ -156,8 +156,8 @@ for (const locale of locales) {
   const contact = contactCopy[locale];
   nonEmpty(contact.meta.title, `contactCopy.${locale}.meta.title`);
   nonEmpty(contact.hero.title, `contactCopy.${locale}.hero.title`);
-  nonEmpty(contact.form.title, `contactCopy.${locale}.form.title`);
-  nonEmpty(contact.form.intro, `contactCopy.${locale}.form.intro`);
+  nonEmpty(contact.whatsapp.title, `contactCopy.${locale}.whatsapp.title`);
+  nonEmpty(contact.whatsapp.intro, `contactCopy.${locale}.whatsapp.intro`);
   assert(contact.directions.points.length >= 3, `contactCopy.${locale}.directions needs 3+ points`);
 
   const tablets = tabletsCopy[locale];
@@ -230,7 +230,6 @@ for (const locale of locales) {
   }
   nonEmpty(socialCopy[locale].facebook.label, `socialCopy.${locale}.facebook.label`);
   nonEmpty(socialCopy[locale].instagram.label, `socialCopy.${locale}.instagram.label`);
-  nonEmpty(socialCopy[locale].newsCta, `socialCopy.${locale}.newsCta`);
 }
 
 for (const price of pricing) {

@@ -101,7 +101,7 @@ Playwright covers both locales, mobile overflow, the mobile drawer, image loadin
 
 - The design kit/moodboard are **art direction references only**. Concept images from those boards must not be shipped as production photography.
 - Production imagery is taken from verified Hong Yuan Hills photography and facilities in `references/HONG YUAN HILLS/`.
-- The footer seal mark is a decorative heritage motif, not an official logo; replace it with client branding when supplied.
+- The client logo is stored at `public/images/client-logo.avif` and used in the home hero and footer.
 
 
 ## Social links
@@ -145,7 +145,7 @@ Copy `.dev.vars.example` to `.dev.vars` for local function secrets.
 
 For local form testing, set `NEXT_PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA` in `.env.local` before building, and set `TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA` in `.dev.vars`. These are Cloudflare's public always-pass test keys. Use `EMAIL_TRANSPORT=noop` so no real emails are sent.
 
-The home page includes the booking/enquiry form at `/contact#form`. Production requires real Turnstile keys, a verified Resend domain, and `ALLOWED_ORIGINS` set to the live domain.
+Home page booking and contact page enquiries open a prefilled WhatsApp conversation. Production form submissions on pre-planning and ancestral tablets require real Turnstile keys, a verified Resend domain, and `ALLOWED_ORIGINS` set to the live domain.
 
 ## Repository notes
 
@@ -153,7 +153,7 @@ The home page includes the booking/enquiry form at `/contact#form`. Production r
 - Optimised public images live in `public/images/` as `.jpg` + `.webp`.
 - Content lives in `content/`; update both `zh` and `en` values.
 - Built routes in both languages: `/`, `/about`, `/news` and article pages, `/services/feng-shui-grounds`, `/services/columbarium`, the four hall detail pages, `/services/funeral-services`, `/services/ancestral-tablets`, `/pre-planning`, `/contact`, `/privacy-policy` and `/terms`.
-- The home booking form and the contact/pre-planning forms use `/api/lead`; the ancestral tablets page uses the same endpoint in notify mode.
+- Pre-planning and ancestral tablets forms use `/api/lead`; the ancestral tablets page uses the same endpoint in notify mode.
 - Hall videos currently show a “coming soon” poster until YouTube IDs are supplied.
 - Remaining: final YouTube IDs, approved price figures, client/legal review of the draft privacy policy and terms, Cloudflare deployment and DNS cutover.
 - `/services` and the old Framer URLs redirect to the closest equivalent.

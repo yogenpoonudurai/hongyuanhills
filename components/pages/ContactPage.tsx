@@ -6,7 +6,6 @@ import {
   PhoneIcon,
   WhatsAppIcon,
 } from "@/components/ui/Icons";
-import { LeadForm } from "@/components/forms/LeadForm";
 import { PageHero } from "@/components/ui/PageHero";
 import { contactCopy } from "@/content/contact";
 import { groundsImages } from "@/content/grounds";
@@ -21,7 +20,6 @@ export function ContactPage({ locale }: { locale: Locale }) {
   const copy = contactCopy[locale];
   const ui = siteCopy[locale];
   const whatsappHref = waLink(ui.whatsapp.general);
-  const formHref = "#form";
 
   const breadcrumbs = [
     { label: locale === "zh" ? "首页" : "Home", href: homeHref(locale) },
@@ -79,10 +77,11 @@ export function ContactPage({ locale }: { locale: Locale }) {
         eyebrow={copy.hero.eyebrow}
         title={copy.hero.title}
         intro={copy.hero.intro}
-        primaryHref={formHref}
-        primaryLabel={copy.form.title}
-        secondaryHref={whatsappHref}
-        secondaryLabel={locale === "zh" ? "WhatsApp 咨询" : "WhatsApp Us"}
+        primaryHref={whatsappHref}
+        primaryLabel={ui.cta.whatsapp}
+        primaryExternal
+        secondaryHref={telHref(contact.phone24h)}
+        secondaryLabel={locale === "zh" ? "拨打 24 小时热线" : "Call the 24-Hour Hotline"}
         breadcrumbs={breadcrumbs}
       />
 
@@ -194,34 +193,20 @@ export function ContactPage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section id="form" className="scroll-mt-40 border-y border-line bg-ivory py-20 md:scroll-mt-48 md:py-28">
-        <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div>
-            <p className="eyebrow">
-              {locale === "zh" ? "查询表格" : "Enquiry Form"}
-            </p>
-            <h2 className="section-title">{copy.form.title}</h2>
-            <p className="section-copy">{copy.form.intro}</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <ButtonLink
-                href={telHref(contact.phone24h)}
-                variant="secondary"
-              >
-                {locale === "zh" ? "拨打 24 小时热线" : "Call the 24-Hour Hotline"}
-              </ButtonLink>
-              <ButtonLink
-                href={whatsappHref}
-                variant="secondary"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {locale === "zh" ? "WhatsApp" : "WhatsApp"}
-              </ButtonLink>
-            </div>
-          </div>
-          <div className="border border-line bg-paper p-5 sm:p-8">
-            <LeadForm locale={locale} />
-          </div>
+      <section className="border-y border-line bg-ivory py-20 md:py-28">
+        <div className="container-page max-w-3xl text-center">
+          <p className="eyebrow">{ui.labels.whatsapp}</p>
+          <h2 className="section-title">{copy.whatsapp.title}</h2>
+          <p className="section-copy mx-auto max-w-xl">{copy.whatsapp.intro}</p>
+          <ButtonLink
+            href={whatsappHref}
+            variant="primary"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-8"
+          >
+            {ui.cta.whatsapp}
+          </ButtonLink>
         </div>
       </section>
     </>

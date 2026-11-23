@@ -6,7 +6,7 @@ import { Picture } from "@/components/ui/Picture";
 import { aboutCopy, aboutImages } from "@/content/about";
 import { siteCopy } from "@/content/site";
 import type { Locale } from "@/content/types";
-import { waLink } from "@/lib/contact";
+import { contact, waLink } from "@/lib/contact";
 import { homeHref, localizedHref } from "@/lib/i18n";
 import { jsonLd } from "@/lib/jsonld";
 import { SITE_URL } from "@/lib/metadata";
@@ -14,7 +14,7 @@ import { SITE_URL } from "@/lib/metadata";
 export function AboutPage({ locale }: { locale: Locale }) {
   const copy = aboutCopy[locale];
   const ui = siteCopy[locale];
-  const bookHref = localizedHref(locale, "/contact#form");
+  const bookHref = waLink(ui.whatsapp.booking, contact.whatsappBooking);
   const whatsappHref = waLink(ui.whatsapp.general);
 
   const breadcrumbs = [
@@ -72,6 +72,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
         title={copy.hero.title}
         intro={copy.hero.intro}
         primaryHref={bookHref}
+        primaryExternal
         primaryLabel={locale === "zh" ? "预约参观" : "Book a Visit"}
         secondaryHref={whatsappHref}
         secondaryLabel={locale === "zh" ? "WhatsApp 咨询" : "WhatsApp Us"}
@@ -236,7 +237,7 @@ export function AboutPage({ locale }: { locale: Locale }) {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <ButtonLink href={bookHref} variant="primary" showArrow>
+            <ButtonLink href={bookHref} variant="primary" target="_blank" rel="noreferrer" showArrow>
               {copy.cta.book}
             </ButtonLink>
             <ButtonLink

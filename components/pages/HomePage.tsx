@@ -31,7 +31,7 @@ export function HomePage({ locale }: { locale: Locale }) {
   const ui = siteCopy[locale];
   const newsUi = newsCopy[locale];
   const isZh = locale === "zh";
-  const bookHref = localizedHref(locale, "/contact#form");
+  const bookHref = waLink(ui.whatsapp.booking, contact.whatsappBooking);
   const whatsappHref = waLink(ui.whatsapp.booking, contact.whatsappBooking);
   const phoneHref = telHref(contact.phone24h);
 
@@ -135,7 +135,7 @@ export function HomePage({ locale }: { locale: Locale }) {
             {copy.hero.body}
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-6">
-            <ButtonLink href={bookHref} variant="primary" showArrow>
+            <ButtonLink href={bookHref} variant="primary" target="_blank" rel="noreferrer" showArrow>
               {copy.hero.primary}
             </ButtonLink>
             <a
@@ -523,7 +523,7 @@ export function HomePage({ locale }: { locale: Locale }) {
               {contact.phone24hDisplay}
             </a>
             <div className="mt-8 flex flex-wrap items-center gap-6">
-              <ButtonLink href={bookHref} variant="primary" showArrow>
+              <ButtonLink href={bookHref} variant="primary" target="_blank" rel="noreferrer" showArrow>
                 {isZh ? "预约参观" : "Book a Visit"}
               </ButtonLink>
               <a
