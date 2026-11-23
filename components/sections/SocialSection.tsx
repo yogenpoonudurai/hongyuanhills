@@ -5,7 +5,6 @@ import {
 } from "@/components/ui/Icons";
 import { socialCopy, socialProfiles } from "@/content/social";
 import type { Locale } from "@/content/types";
-import { localizedHref } from "@/lib/i18n";
 
 export function SocialSection({ locale }: { locale: Locale }) {
   const copy = socialCopy[locale];
@@ -24,13 +23,6 @@ export function SocialSection({ locale }: { locale: Locale }) {
         </div>
 
         <div className="flex flex-col gap-4 sm:items-end">
-          <a
-            href={localizedHref(locale, "/news")}
-            className="group inline-flex items-center gap-2 text-sm font-medium text-jade transition hover:text-jade-deep"
-          >
-            {copy.newsCta}
-            <ArrowRightIcon className="h-4 w-4 transition group-hover:translate-x-0.5" />
-          </a>
           <a
             href={socialProfiles.facebook.url}
             target="_blank"

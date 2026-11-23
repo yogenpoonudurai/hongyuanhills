@@ -11,7 +11,6 @@ import { contact, mapsUrl, telHref, waLink } from "@/lib/contact";
 import { homeHref, localizedHref } from "@/lib/i18n";
 import { LanguageSwitchLink } from "@/components/layout/LanguageSwitchLink";
 import { ThemeSwitch } from "@/components/layout/ThemeSwitch";
-import { SealMark } from "@/components/ui/SealMark";
 import { FacebookIcon, InstagramIcon } from "@/components/ui/Icons";
 import { socialProfiles } from "@/content/social";
 
@@ -25,7 +24,7 @@ export function Footer({ locale }: { locale: Locale }) {
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 md:py-20 lg:grid-cols-4">
         <div>
           <a href={home} className="inline-flex items-center gap-3 leading-none">
-            <SealMark />
+            <img src="/images/client-logo.avif" alt="" aria-hidden="true" className="h-8 w-8 shrink-0 object-contain" />
             <span className="flex flex-col">
               <span className="font-display text-2xl tracking-[0.14em]">
                 {copy.brand.name}
