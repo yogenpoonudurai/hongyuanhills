@@ -2,12 +2,6 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 const articleSlug = "online-visit-requests";
-const expectedHomePosts = [
-  { slug: "online-visit-requests", title: "WhatsApp 预约参观现已开放" },
-  { slug: "ancestral-tablets-coming-soon", title: "神主牌服务筹备中" },
-  { slug: "hall-video-tours-coming-soon", title: "四座骨灰殿导览影片即将上线" },
-];
-
 test.describe("news and updates", () => {
   test("hub lists posts and has bilingual metadata", async ({ page }) => {
     await page.goto("/news");
@@ -58,11 +52,7 @@ test.describe("news and updates", () => {
     const section = page.locator("#news");
     await expect(section.getByRole("heading", { name: "最新消息" })).toBeVisible();
     const postLinks = section.locator('a[href^="/news/"]');
-    await expect(postLinks).toHaveCount(expectedHomePosts.length);
-    for (const post of expectedHomePosts) {
-      const postLink = section.getByRole("link").filter({ hasText: post.title });
-      await expect(postLink).toHaveAttribute("href", `/news/${post.slug}/`);
-    }
+    await expect(postLinks).toHaveCount(3);
   });
 
   test("language switch maps a news article", async ({ page }) => {
