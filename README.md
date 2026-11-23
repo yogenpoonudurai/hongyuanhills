@@ -101,7 +101,7 @@ Playwright covers both locales, mobile overflow, the mobile drawer, image loadin
 
 - The design kit/moodboard are **art direction references only**. Concept images from those boards must not be shipped as production photography.
 - Production imagery is taken from verified Hong Yuan Hills photography and facilities in `references/HONG YUAN HILLS/`.
-- The client logo is stored at `public/images/client-logo.avif` and used in the home hero and footer.
+- The client logo is stored at `public/images/client-logo.avif` and used in the header, home hero, and footer.
 
 
 ## Social links
