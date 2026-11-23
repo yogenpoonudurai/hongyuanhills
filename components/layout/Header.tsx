@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   ChevronDownIcon,
@@ -123,25 +124,15 @@ export function Header({ locale }: { locale: Locale }) {
       </div>
 
       <div className="container-page flex h-[4.5rem] items-center justify-between gap-4">
-        <a href={home} className="group flex flex-col leading-none">
-          <span
-            className={cn(
-              "font-display text-[1.45rem] tracking-[0.16em] transition",
-              transparent
-                ? "text-ivory group-hover:text-gold-light"
-                : "text-ink group-hover:text-jade",
-            )}
-          >
-            {copy.brand.name}
-          </span>
-          <span
-            className={cn(
-              "mt-1 text-[9px] font-semibold tracking-[0.38em]",
-              transparent ? "text-gold-light" : "text-stone",
-            )}
-          >
-            {copy.brand.latin}
-          </span>
+        <a href={home} className="group flex items-center">
+          <Image
+            src="/images/client-logo.avif"
+            alt={`${copy.brand.name} ${copy.brand.latin}`}
+            width={48}
+            height={48}
+            priority
+            className="h-11 w-11 object-contain transition group-hover:opacity-90"
+          />
         </a>
 
         <nav
@@ -243,14 +234,13 @@ export function Header({ locale }: { locale: Locale }) {
             className="absolute right-0 top-0 flex h-dvh w-[min(92vw,380px)] flex-col bg-paper shadow-2xl"
           >
             <div className="flex items-center justify-between border-b border-line px-6 py-5">
-              <div className="flex flex-col leading-none">
-                <span className="font-display text-xl tracking-[0.14em] text-ink">
-                  {copy.brand.name}
-                </span>
-                <span className="mt-1 text-[9px] font-semibold tracking-[0.34em] text-stone">
-                  {copy.brand.latin}
-                </span>
-              </div>
+              <Image
+                src="/images/client-logo.avif"
+                alt={`${copy.brand.name} ${copy.brand.latin}`}
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain"
+              />
               <button
                 ref={closeRef}
                 type="button"
