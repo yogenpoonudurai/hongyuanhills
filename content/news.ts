@@ -18,21 +18,21 @@ export const news: NewsPost[] = [
     date: "2026-11-21",
     category: { zh: "服务更新", en: "Service update" },
     title: {
-      zh: "网上预约参观现已开放",
-      en: "Online visit requests are now open",
+      zh: "WhatsApp 预约参观现已开放",
+      en: "Book a visit via WhatsApp",
     },
     excerpt: {
-      zh: "您可以通过网站表格预约参观宏缘宝地，选择想了解的服务与希望到访的日期。",
-      en: "You can now request a visit to Hong Yuan Hills through the website, including the service you are interested in and your preferred date.",
+      zh: "欢迎通过 WhatsApp 联系我们预约参观宏缘宝地，并告诉我们您想了解的服务。",
+      en: "Contact us on WhatsApp to book a visit to Hong Yuan Hills and let us know which services interest you.",
     },
     body: {
       zh: [
-        "您现可通过网站表格预约参观宏缘宝地。填写姓名、联络电话与想了解的服务，并选择希望到访的日期与时段，我们会安排顾问与您联系。",
-        "如需即时殡仪协助，请直接致电 24 小时热线或通过 WhatsApp 联系我们；网站表格不适用于紧急情况。",
+        "您现可通过 WhatsApp 联系宏缘宝地预约参观，并告诉我们想了解的服务。顾问会与您联系，确认到访时间与安排。",
+        "如需即时殡仪协助，请直接致电 24 小时热线；预约参观与一般查询可通过 WhatsApp 联系我们。",
       ],
       en: [
-        "You can now request a visit to Hong Yuan Hills through the website. Share your name, phone number and service interest, and choose a preferred date and time. A consultant will contact you to confirm the arrangement.",
-        "For immediate funeral assistance, please call the 24-hour hotline or contact us via WhatsApp directly. The website form is not intended for emergencies.",
+        "You can now contact Hong Yuan Hills on WhatsApp to book a visit and tell us which services interest you. A consultant will follow up to confirm the time and arrangements.",
+        "For immediate funeral assistance, please call the 24-hour hotline. Contact us on WhatsApp for visit bookings and general enquiries.",
       ],
     },
     image: groundsImages.landscape,

@@ -32,7 +32,7 @@ export function HomePage({ locale }: { locale: Locale }) {
   const newsUi = newsCopy[locale];
   const isZh = locale === "zh";
   const bookHref = waLink(ui.whatsapp.booking, contact.whatsappBooking);
-  const whatsappHref = waLink(ui.whatsapp.booking, contact.whatsappBooking);
+  const whatsappHref = waLink(ui.whatsapp.general, contact.whatsappGeneral);
   const phoneHref = telHref(contact.phone24h);
 
   const localBusiness = {
