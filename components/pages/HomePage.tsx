@@ -7,6 +7,7 @@ import {
   PhoneIcon,
   WhatsAppIcon,
 } from "@/components/ui/Icons";
+import Image from "next/image";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Picture } from "@/components/ui/Picture";
 import { SocialSection } from "@/components/sections/SocialSection";
@@ -123,7 +124,7 @@ export function HomePage({ locale }: { locale: Locale }) {
 
         <div className="container-page pb-14 pt-40 md:pb-24">
           <div className="flex items-center gap-3">
-            <img src="/images/client-logo.avif" alt="" aria-hidden="true" className="h-8 w-8 shrink-0 object-contain" />
+            <Image src="/images/client-logo.avif" alt="" aria-hidden="true" width={32} height={32} className="h-8 w-8 shrink-0 object-contain" />
             <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-gold-light">
               {copy.hero.eyebrow}
             </p>

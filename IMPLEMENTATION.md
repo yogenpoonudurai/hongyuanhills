@@ -1320,7 +1320,7 @@ no-mistakes axi run --intent "<full user intent and decisions>"
 
 **Intent template:**
 
-> Build the Hong Yuan Hills bilingual memorial-park site without a CMS. Use static-export Next.js on Cloudflare Pages free tier; Chinese at `/`, English at `/en`; typed TS/MDX content; pricing as “From RM” from image flyers with “Price on request” fallback; booking request form only; forms via one Pages Function with Turnstile and Resend; no WordPress/Framer/VPS; preserve GoDaddy domain and email DNS; mobile-first, accessible, performance-budgeted.
+> Build the Hong Yuan Hills bilingual memorial-park site without a CMS. Use static-export Next.js on Cloudflare Pages free tier; Chinese at `/`, English at `/en`; typed TS/MDX content; pricing as “From RM” from image flyers with “Price on request” fallback; use WhatsApp as the point of communication, with localized prefilled booking and enquiry CTAs on the home page and a WhatsApp CTA on the contact page; do not add on-site contact or booking forms; no WordPress/Framer/VPS; preserve GoDaddy domain and email DNS; mobile-first, accessible, performance-budgeted.
 
 **Rules:**
 

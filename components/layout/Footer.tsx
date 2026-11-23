@@ -13,6 +13,7 @@ import { LanguageSwitchLink } from "@/components/layout/LanguageSwitchLink";
 import { ThemeSwitch } from "@/components/layout/ThemeSwitch";
 import { FacebookIcon, InstagramIcon } from "@/components/ui/Icons";
 import { socialProfiles } from "@/content/social";
+import Image from "next/image";
 
 export function Footer({ locale }: { locale: Locale }) {
   const copy = siteCopy[locale];
@@ -24,7 +25,7 @@ export function Footer({ locale }: { locale: Locale }) {
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 md:py-20 lg:grid-cols-4">
         <div>
           <a href={home} className="inline-flex items-center gap-3 leading-none">
-            <img src="/images/client-logo.avif" alt="" aria-hidden="true" className="h-8 w-8 shrink-0 object-contain" />
+            <Image src="/images/client-logo.avif" alt="" aria-hidden="true" width={32} height={32} className="h-8 w-8 shrink-0 object-contain" />
             <span className="flex flex-col">
               <span className="font-display text-2xl tracking-[0.14em]">
                 {copy.brand.name}
