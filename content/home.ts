@@ -86,7 +86,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       primary: "预约参观",
       secondary: "WhatsApp 咨询",
       note: "24小时服务 · 中文 / English",
-      imageAlt: "宏缘宝地园区山水景观",
+      imageAlt: "宏缘宝地丹香阁殿堂",
     },
     trust: [
       { value: "24小时", label: "紧急服务待命" },
@@ -228,7 +228,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       primary: "Book a Visit",
       secondary: "WhatsApp Us",
       note: "24-hour service · 中文 / English",
-      imageAlt: "Landscape at Hong Yuan Hills memorial park",
+      imageAlt: "Danxiang Hall at Hong Yuan Hills",
     },
     trust: [
       { value: "24 hours", label: "Emergency service" },
