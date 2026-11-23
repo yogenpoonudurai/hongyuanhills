@@ -27,7 +27,7 @@ All decisions below reflect the confirmed conversation:
 - No CMS, no WordPress, no Framer, no VPS.
 - Next.js static export on Cloudflare Pages free tier.
 - Forms via one Cloudflare Pages Function.
-- Booking is a request form only.
+- Home-page booking and enquiry CTAs open WhatsApp with localized prefilled messages; the contact page also directs visitors to WhatsApp.
 - Pricing is “From RM” where figures exist, otherwise “Price on request”.
 - Price source is the image-only A4 flyers/posters until the client supplies figures.
 - 神主牌 is “Coming Soon” with notify-me.
@@ -161,7 +161,7 @@ Hong Yuan Hills is a Feng Shui memorial park and columbarium serving Chinese-Mal
 ### 4.2 Journeys
 
 **Immediate need**
-Home → tap 24h call/WhatsApp → Funeral Services → package/process → contact/lead.
+Home → tap 24h call/WhatsApp → Funeral Services → package/process → contact/WhatsApp.
 
 **Pre-planning**
 Search (Chinese/English) → Penglai or hall page → video/gallery → pricing → Book a Visit → WhatsApp follow-up.
@@ -170,7 +170,7 @@ Search (Chinese/English) → Penglai or hall page → video/gallery → pricing 
 Home/Services → Columbarium hub → 4 hall pages → video/panels → enquiry prefilled with the hall name.
 
 **Visit**
-Contact → map/directions (Google Maps/Waze) → book a visit form → confirmation/WhatsApp.
+Contact → map/directions (Google Maps/Waze) → book a visit via WhatsApp.
 
 **Seasonal**
 Qingming/中元/重阳 notice or ceremony page → gallery/events → contact (phase 2 for events).
@@ -1524,7 +1524,7 @@ If the client later wants self-editing, use **Keystatic** (Git-based, no databas
 |---|---|---|---|
 | 0. Foundations | 3–5 days | Git repo, Cloudflare/GitHub/Resend accounts, DNS audit, content/price/video checklist, no-mistakes init | Access confirmed; unknowns logged |
 | 1. Scaffold + design system | 1 week | Next.js static export, Tailwind tokens, fonts, layout shell, header/footer/mobile bar, language routing | `pnpm/npm build` produces `out/`; `/` and `/en` render correct `lang` |
-| 2. Home + forms | 1 week | Home page, contact CTAs, lead endpoint, Turnstile, Resend, preview mode | Form success/failure tested; mobile bar works |
+| 2. Home + forms | 1 week | Home page, WhatsApp contact CTAs, lead endpoint, Turnstile, Resend, preview mode | WhatsApp links and remaining form success/failure paths verified; mobile bar works |
 | 3. Product pages | 2 weeks | Penglai, columbarium hub, 4 hall pages, videos/galleries, pricing cards | All content renders; videos click-to-load |
 | 4. Remaining pages | 1 week | About, funeral, pre-planning, tablets, contact, legal, 404 | Navigation complete; redirects mapped |
 | 5. Content + SEO | 1 week | All copy, images, metadata, schema, sitemap, analytics | Client content review; validation passes |
