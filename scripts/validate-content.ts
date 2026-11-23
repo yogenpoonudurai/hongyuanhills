@@ -209,10 +209,16 @@ for (const locale of locales) {
 }
 
 
-for (const profile of Object.values(socialProfiles)) {
+for (const [platform, profile] of Object.entries(socialProfiles)) {
+  const expectedHost = platform === "facebook" ? "www.facebook.com" : "www.instagram.com";
+  let profileUrl: URL;
+  try {
+    profileUrl = new URL(profile.url);
+  } catch {
+    throw new Error(`social profile URL is invalid: ${profile.url}`);
+  }
   assert(
-    profile.url.startsWith("https://www.facebook.com/") ||
-      profile.url.startsWith("https://www.instagram.com/"),
+    profileUrl.protocol === "https:" && profileUrl.hostname === expectedHost,
     `social profile URL is invalid: ${profile.url}`,
   );
   nonEmpty(profile.handle, `social profile handle is empty`);
